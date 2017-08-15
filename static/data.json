@@ -1,0 +1,246 @@
+[
+    {
+        "functionclass":{
+            "name":"product",
+            "title":"产品体系",
+            "leftMenu":[
+                {
+                    "key":1,
+                    "name":"高分宝典"
+                },
+                {
+                    "key":2,
+                    "name":"保分计划"
+                },
+                {
+                    "key":3,
+                    "name":"辽师大"
+                },
+                {
+                    "key":4,
+                    "name":"智慧陪伴"
+                },
+                {
+                    "key":5,
+                    "name":"南师大"
+                },
+                {
+                    "key":6,
+                    "name":"鹏云"
+                }                   
+            ],
+            "right":[
+                {
+                    "key":1,
+                    "rightTable":[
+                        {
+                            "date": "2016-05-02",
+                            "name": "VIP保分计划—保高考一本线上30分课程",
+                            "describe": "易教空间"
+                        },
+                        {
+                            "date": "2016-05-02",
+                            "name": "VIP保分计划—保高考一本线课程",
+                            "describe": "易教空间"
+                        },
+                        {
+                            "date": "2016-05-02",
+                            "name": "VIP保分计划—高考二本线课程",
+                            "describe": "易教空间"
+                        }
+                    ]
+                },
+                {
+                    "key":2,
+                    "rightTable":[
+                        {
+                            "date": "2016-05-02",
+                            "name": "高分宝典-学生端",
+                            "describe": "易教空间"
+                        },
+                        {
+                            "date": "2016-05-02",
+                            "name": "高分宝典-教师端",
+                            "describe": "易教空间"
+                        }
+                    ]
+                },
+                {
+                    "key":3,
+                    "rightTable":[
+                        {
+                            "date": "2016-05-02",
+                            "name": "2017中考必备",
+                            "describe": "易教空间"
+                        },
+                        {
+                            "date": "2016-05-02",
+                            "name": "新课程新教材导航",
+                            "describe": "易教空间"
+                        },
+                        {
+                            "date": "2016-05-02",
+                            "name": "自主学",
+                            "describe": "易教空间"
+                        }, {
+                            "date": "2016-05-02",
+                            "name": "南师奥数题典",
+                            "describe": "易教空间"
+                        },
+                        {
+                            "date": "2016-05-02",
+                            "name": "中考全程复习训练",
+                            "describe": "易教空间"
+                        },
+                        {
+                            "date": "2016-05-02",
+                            "name": "小学暑假乐园",
+                            "describe": "易教空间"
+                        }, {
+                            "date": "2016-05-02",
+                            "name": "小学暑假乐园阅读",
+                            "describe": "易教空间"
+                        },
+                        {
+                            "date": "2016-05-02",
+                            "name": "暑假乐园D版",
+                            "describe": "易教空间"
+                        },
+                        {
+                            "date": "2016-05-02",
+                            "name": "暑假乐园JZ版",
+                            "describe": "易教空间"
+                        },
+                        {
+                            "date": "2016-05-02",
+                            "name": "初中暑假乐园阅读",
+                            "describe": "易教空间"
+                        },
+                        {
+                            "date": "2016-05-02",
+                            "name": "南师奥数指导",
+                            "describe": "易教空间"
+                        }
+
+                    ]
+                }
+            ]
+
+        }
+    },
+    {
+        "functionclass":{
+            "name":"resources",
+            "title":"资源",
+            "leftMenu":[
+                {
+                    "key":"level1",
+                    "name":"试题",
+                    "level2":[
+                        {
+                            "key":1,
+                            "name":"创建试题"
+                        },
+                        {
+                            "key":2,
+                            "name":"检索试题"
+                        }
+                    ]
+                },
+                {
+                    "key":"level2",
+                    "name":"视频",
+                    "level2":[
+                        {
+                            "key":3,
+                            "name":"视频录入"
+                        },
+                        {
+                            "key":4,
+                            "name":"视频查询"
+                        }
+                    ]
+                },
+                {
+                    "key":"level3",
+                    "name":"音频",
+                    "level2":[
+                        {
+                            "key":5,
+                            "name":"音频录入"
+                        },
+                        {
+                            "key":6,
+                            "name":"音频查询"
+                        }
+                    ]
+                },
+                {
+                    "key":7,
+                    "name":"资源"
+                },
+                {
+                    "key":8,
+                    "name":"试卷"
+                },
+                {
+                    "key":9,
+                    "name":"诊断，建议"
+                }                    
+            ],
+            "right":[
+                 {
+                    "key":1,
+                    "rightTable":[
+                        {
+                            "date": "2016-05-02",
+                            "name": "创建试题",
+                            "describe": "易教空间"
+                        },
+                        {
+                            "date": "2016-05-02",
+                            "name": "创建试题",
+                            "describe": "易教空间"
+                        },
+                        {
+                            "date": "2016-05-02",
+                            "name": "创建试题",
+                            "describe": "易教空间"
+                        }
+                    ]
+                },
+                {
+                    "key":2,
+                    "rightTable":[
+                        {
+                            "date": "2016-05-02",
+                            "name": "检索试题",
+                            "describe": "易教空间"
+                        }
+                    ]
+                },
+                {
+                    "key":3,
+                    "rightTable":[
+                        {
+                            "date": "2016-05-02",
+                            "name": "视频录入",
+                            "describe": "易教空间"
+                        },
+                        {
+                            "date": "2016-05-02",
+                            "name": "视频录入",
+                            "describe": "易教空间"
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "functionclass":{
+             "name":"knowledgepoint",
+             "title":"知识点"
+        }
+    }
+]
