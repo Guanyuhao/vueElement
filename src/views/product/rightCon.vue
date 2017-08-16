@@ -56,15 +56,10 @@
     },
     methods:{
       handleEdit(index, row) {
-        console.log(index, row);
-         const h = this.$createElement;
-        
+       // console.log(index, row);
+        const h = this.$createElement;
         this.$msgbox({
           title: '消息',
-          // message: h('p', null, [
-          //   h('span', null, '内容可以是 '),
-          //   h('i', { style: 'color: teal' }, 'VNode')
-          // ]),
           message:h('span',null,'名称：'),
           showCancelButton: true,
           confirmButtonText: '确定',
