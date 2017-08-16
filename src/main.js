@@ -60,4 +60,5 @@ new Vue({
   template: '<App/>',
   components: { App }
 })
-
+//Vue事件中心
+Vue.prototype.$eventBus = new Vue()

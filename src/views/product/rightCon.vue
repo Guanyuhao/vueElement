@@ -18,7 +18,7 @@
       <template scope="scope">
         <el-popover trigger="hover" placement="top">
           <p>姓名: {{ scope.row.name }}</p>
-          <p>住址: {{ scope.row.address }}</p>
+          <p>描述: {{ scope.row.describe }}</p>
           <div slot="reference" class="name-wrapper">
             <el-tag>{{ scope.row.name }}</el-tag>
           </div>

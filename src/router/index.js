@@ -19,7 +19,7 @@ const toolcase = r => require.ensure([], () => r(require('@/views/product/produc
 
 //数据可视化
 const dataVisualization = r => require.ensure([], () => r(require('@/views/datavisualization/dataVisualization')), 'views')
-
+const shoppingCar = r => require.ensure([],()=>r(require('@/views/shoppingCar/shoppingCar')),'views')
 
 Vue.use(Router)
 export default new Router({
@@ -80,6 +80,10 @@ export default new Router({
     {
       path:'/dataVisualization',
       component:dataVisualization
+    },
+    {
+      path:'/shoppingCar',
+      component:shoppingCar
     }
     
   ]
