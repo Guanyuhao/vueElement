@@ -149,7 +149,8 @@ export default {
            
       },
       handleEdit(index,row){
-         const h = this.$createElement;
+                   
+        const h = this.$createElement;
         this.$msgbox({
           title: '消息',
           message:h('div',{calss:'msg'},[
@@ -177,7 +178,7 @@ export default {
                    row.name = name                      
                   }
                   if(num){
-                    row.num = num
+                    row.num = Number(num)
                   }
 
                 done();
@@ -208,7 +209,12 @@ export default {
               });
           }
           
-        });
+        }).catch(()=>{
+            this.$message({
+                type: 'info',
+                message: '已取消编辑'
+            });         
+        })
       }
     }
 }
