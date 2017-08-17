@@ -1,4 +1,4 @@
-# vue-cli ElementUI
+﻿# vue-cli ElementUI
 
 >A Vue.js,ElementUI,vueX => demo
 
@@ -20,8 +20,28 @@ npm run build --report
 
 For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
 # vue 跨组件通信
->1.使用v-on/$emit
-``` 在父组件中使用$on监听子组件自定义事件逻辑回调，子组件中使用$emit去触发事件提供交互数据
-this.$emit('listenToChildEvent', key) <left-menu v-on:listenToChildEvent='showMsgFromChild'></left-menu>
+>1.使用props （父传子）
+```子组件通过props来接受父组件的通信。
+scr/views/product/
+<right-con :rightKey='rightKey'></right-con>
+ props:['rightKey']
+单向数据流，不可逆转。	
 ```
->2.建立一个Vue事件中心
+>2.使用v-on/$emit（子传父）
+``` 在父组件中使用$on监听子组件自定义事件逻辑回调，子组件中使用$emit去触发事件提供交互数据。
+src/views/product/
+this.$emit('listenToChildEvent', key) 
+<left-menu v-on:listenToChildEvent='showMsgFromChild'></left-menu>
+如果跨多层父子或者兄弟的话，这个方法会非常的复杂。
+```
+>3.建立一个Vue事件中心（跨组件）
+```说白了就是将所有的通信事件抽离出来，通过一个vue实例来对他们进行管理。
+main.js
+将Vue实例挂在Vue的原型上，这样每个组件就都可以使用了
+Vue.prototype.$eventBus = new Vue()
+A组件通过$eventBus.$on监听B组件的$eventBus.$emit可以进行直接交互完成兄弟组件之间的通信。
+src/view/shoppingCar
+goodlist交互Car
+ this.$eventBus.$emit('mappingCar',index)   this.$eventBus.$on('mappingCar',function(index){}）
+```
+>4.vueX请看教程=>https://vuex.vuejs.org/zh-cn/
