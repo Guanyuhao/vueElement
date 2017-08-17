@@ -54,7 +54,7 @@ import rightCon from './rightCon'
     }
 
 </script>
-<style>
+ <style scoped>
   .bg-purple-dark {
     background: #99a9bf;
   }

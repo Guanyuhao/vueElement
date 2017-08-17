@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-//自行配置录音查看
+//home demo
 const home = r => require.ensure([], () => r(require('@/components/Home')), 'home')
 const processingcenter = r => require.ensure([], () => r(require('@/components/navMenu/processingCen')), 'navMenu')
 const upload = r => require.ensure([],()=>r(require('@/components/leftMenu/upload')),'leftMenu')
@@ -9,25 +9,33 @@ const iscroll = r => require.ensure([],()=>r(require('@/components/iScroll')),'i
 
 // views 主看 product
 // 做呈现 操作 static/下面的json
-const Index = r => require.ensure([], () => r(require('@/views/index')), 'views')
-const datadictionary = r => require.ensure([], () => r(require('@/views/product/product')), 'views')
-const diagnostic = r => require.ensure([], () => r(require('@/views/product/product')), 'views')
-const knowledgepoint = r => require.ensure([], () => r(require('@/views/product/product')), 'views')
+const index = r => require.ensure([], () => r(require('@/views/index')), 'views')
+
+// const datadictionary = r => require.ensure([], () => r(require('@/views/product/product')), 'views')
+// const diagnostic = r => require.ensure([], () => r(require('@/views/product/product')), 'views')
+// const knowledgepoint = r => require.ensure([], () => r(require('@/views/product/product')), 'views')
+//const toolcase = r => require.ensure([], () => r(require('@/views/product/product')), 'views')
+
 const product = r => require.ensure([], () => r(require('@/views/product/product')), 'views')
 const resources = r => require.ensure([], () => r(require('@/views/product/product')), 'views')
-const toolcase = r => require.ensure([], () => r(require('@/views/product/product')), 'views')
+
 
 //数据可视化
 const dataVisualization = r => require.ensure([], () => r(require('@/views/datavisualization/dataVisualization')), 'views')
 const shoppingCar = r => require.ensure([],()=>r(require('@/views/shoppingCar/shoppingCar')),'views')
-
+const courseManagement = r => require.ensure([],()=>r(require('@/views/courseManagement/courseManagement')),'views')
 Vue.use(Router)
 export default new Router({
   routes: [
     {
-      path: '/',
-      name: 'Index',
-      component:Index,
+      path:'/',
+      name:'index',
+      component:index
+    },
+    {
+      path: '/home',
+      name: 'home',
+      component:home,
       children:[
         {
           path:'/processingcenter',
@@ -84,6 +92,10 @@ export default new Router({
     {
       path:'/shoppingCar',
       component:shoppingCar
+    },
+    {
+      path:'/courseManagement',
+      component:courseManagement
     }
     
   ]

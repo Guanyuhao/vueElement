@@ -22,14 +22,11 @@
 </template>
 <style>
 .el-row {
-    margin-bottom: 20px;
     &:last-child {
       margin-bottom: 0;
     }
   }
-  .el-col {
-    border-radius: 4px;
-  }
+
   .bg-purple-dark {
     background: #99a9bf;
   }
@@ -71,6 +68,11 @@
             return{
                 listArr:[
                     {
+                        name:'/home',
+                        txt:'主页',
+                        id:0
+                    },
+                    {
                         name:'/product',
                         txt:'产品',
                         id:1
@@ -81,25 +83,30 @@
                         id:2
                     },
                     {
-                        name:'/knowledgepoint',
-                        txt:'知识点',
+                        name:'/coursemanagement',
+                        txt:'课程管理',
                         id:3
                     },
-                    {
-                        name:'/datadictionary',
-                        txt:'数据字典',
-                        id:4
-                    },
-                    {
-                        name:'/diagnostic',
-                        txt:'诊断校验',
-                        id:5
-                    },
-                    {
-                        name:'/toolcase',
-                        txt:'工具箱',
-                        id:6
-                    },
+                    // {
+                    //     name:'/knowledgepoint',
+                    //     txt:'知识点',
+                    //     id:3
+                    // },
+                    // {
+                    //     name:'/datadictionary',
+                    //     txt:'数据字典',
+                    //     id:4
+                    // },
+                    // {
+                    //     name:'/diagnostic',
+                    //     txt:'诊断校验',
+                    //     id:5
+                    // },
+                    // {
+                    //     name:'/toolcase',
+                    //     txt:'工具箱',
+                    //     id:6
+                    // },
                     {
                         name:'/Datavisualization',
                         txt:'数据可视化',

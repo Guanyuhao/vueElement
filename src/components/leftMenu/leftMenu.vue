@@ -14,14 +14,22 @@
                   
                 <el-menu-item index="upload"><i class="el-icon-menu"></i>上传</el-menu-item>
                 <el-menu-item index="3"><i class="el-icon-setting"></i>导航三</el-menu-item>
+                <el-menu-item index="#"><i class="el-icon-setting"></i>count:{{count}}</el-menu-item>                
                 </el-menu>
             </el-col>
         </el-row>
     </div>
 </template>
 <script>
+
    export default {
     name:'leftMenu',
+    computed:{
+        count(){
+             return this.$store.state.count
+             //战士count
+        }
+    },
     methods: {
       handleOpen(key, keyPath) {
         console.log(key, keyPath);

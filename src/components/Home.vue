@@ -13,7 +13,7 @@
         <el-row>
           <el-col :span="4">
             <div class="grid-content">
-              {{count}}
+           
                  <left-menu> </left-menu>
             </div>
             </el-col>
