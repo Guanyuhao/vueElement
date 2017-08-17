@@ -53,17 +53,18 @@ export default new Router({
       component:iscroll
 
     },
+    // {
+
+    //   path:'/datadictionary',
+    //   component:datadictionary
+
+    // },{
+
+    //   path:'/diagnostic',
+    //   component:diagnostic
+
+    // },
     {
-
-      path:'/datadictionary',
-      component:datadictionary
-
-    },{
-
-      path:'/diagnostic',
-      component:diagnostic
-
-    },{
 
       path:'/product',
       component:product
@@ -75,16 +76,16 @@ export default new Router({
       component:resources
 
     },
-    {
+    // {
 
-      path:'/toolcase',
-      component:toolcase
+    //   path:'/toolcase',
+    //   component:toolcase
 
-    },
-    {
-      path:'/knowledgepoint',
-      component:knowledgepoint
-    },
+    // },
+    // {
+    //   path:'/knowledgepoint',
+    //   component:knowledgepoint
+    // },
     {
       path:'/dataVisualization',
       component:dataVisualization
