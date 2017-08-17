@@ -23,8 +23,10 @@ For detailed explanation on how things work, checkout the [guide](http://vuejs-t
 >1.使用props （父传子）
 ```子组件通过props来接受父组件的通信。
   scr/views/product/
+  
   <right-con :rightKey='rightKey'></right-con>
   props:['rightKey']
+  
 单向数据流，不可逆转。	
 ```
 >2.使用v-on/$emit（子传父）
