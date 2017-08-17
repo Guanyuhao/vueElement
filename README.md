@@ -23,15 +23,19 @@ For detailed explanation on how things work, checkout the [guide](http://vuejs-t
 >1.使用props （父传子）
 ```子组件通过props来接受父组件的通信。
 scr/views/product/
+
 <right-con :rightKey='rightKey'></right-con>
  props:['rightKey']
+ 
 单向数据流，不可逆转。	
 ```
 >2.使用v-on/$emit（子传父）
 ``` 在父组件中使用$on监听子组件自定义事件逻辑回调，子组件中使用$emit去触发事件提供交互数据。
 src/views/product/
+
 this.$emit('listenToChildEvent', key) 
 <left-menu v-on:listenToChildEvent='showMsgFromChild'></left-menu>
+
 如果跨多层父子或者兄弟的话，这个方法会非常的复杂。
 ```
 >3.建立一个Vue事件中心（跨组件）
@@ -39,9 +43,14 @@ this.$emit('listenToChildEvent', key)
 main.js
 将Vue实例挂在Vue的原型上，这样每个组件就都可以使用了
 Vue.prototype.$eventBus = new Vue()
+
 A组件通过$eventBus.$on监听B组件的$eventBus.$emit可以进行直接交互完成兄弟组件之间的通信。
 src/view/shoppingCar
+
 goodlist交互Car
- this.$eventBus.$emit('mappingCar',index)   this.$eventBus.$on('mappingCar',function(index){}）
+ this.$eventBus.$emit('mappingCar',index)   
+ this.$eventBus.$on('mappingCar',function(){}）
+ 
+ 貌似到了这里我们找到了最好的方式，但是呢‘一方触发，八方回调’
 ```
 >4.vueX请看教程=>https://vuex.vuejs.org/zh-cn/
