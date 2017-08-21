@@ -5,6 +5,7 @@
                 <el-col :span="24">
                     <div class="grid-content bg-purple-dark h1-warp">
                         <h1>资源库</h1>
+                        
                     </div>
                     </el-col>
             </el-row>
@@ -17,10 +18,13 @@
                         </router-link>
                     </li>
                 </ul>
+                
         </section>
     </div>
 </template>
-<style>
+<style lang='scss' scoped>
+
+
 .el-row {
     &:last-child {
       margin-bottom: 0;
@@ -60,6 +64,7 @@
  .h1-warp{
     padding-left: 2%;
     line-height: 80px;
+    text-align: center;
  }
 </style>
 <script>
@@ -67,6 +72,10 @@
         data(){
             return{
                 listArr:[
+                    {
+                        name:'/login',
+                        txt:'登录'
+                    },
                     {
                         name:'/home',
                         txt:'主页',
@@ -114,7 +123,8 @@
                     },
                     {
                         name:'/shoppingCar',
-                        txt:'购物车'
+                        txt:'购物车',
+                        id:'car'
                     }
                 ]
             }

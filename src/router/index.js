@@ -22,11 +22,20 @@ const resources = r => require.ensure([], () => r(require('@/views/product/produ
 
 //数据可视化
 const dataVisualization = r => require.ensure([], () => r(require('@/views/datavisualization/dataVisualization')), 'views')
+
 const shoppingCar = r => require.ensure([],()=>r(require('@/views/shoppingCar/shoppingCar')),'views')
 const courseManagement = r => require.ensure([],()=>r(require('@/views/courseManagement/courseManagement')),'views')
+//登录注册
+const login  = r =>require.ensure([],()=>r(require('@/Login')),'user')
+
 Vue.use(Router)
 export default new Router({
   routes: [
+    {
+      path:'/login',
+      name:'login',
+      component:login
+    },
     {
       path:'/',
       name:'index',
