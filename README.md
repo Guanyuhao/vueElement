@@ -51,7 +51,7 @@ goodlist交互Car
  this.$eventBus.$emit('mappingCar',index)   
  this.$eventBus.$on('mappingCar',function(){}）
  
-貌似到了这里我们找到了最好的方式，但是缺点就在‘一方触发，八方回调’比方说当你跟请了妹子A妹子B一起吃了饭，但是现在妹子A妹子B都想单独请你吃法，你怎么办？
+貌似到了这里我们找到了最好的方式，但是缺点就在‘一方触发，八方回调’比方说当你请了妹子A，B一起吃了饭，但是现在妹子A妹子B都想单独请你吃饭，你怎么办？
 ```
 >4.vueX请看教程=>https://vuex.vuejs.org/zh-cn/
 # 配置台实现登录注册 
