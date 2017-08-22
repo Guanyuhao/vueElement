@@ -32,7 +32,8 @@
 </template>
 
 <script>
-import postRegister from '@/api/index'
+import api from '@/api/index'
+
 //axios 复用
 export default {
     name: 'Login',
@@ -50,9 +51,9 @@ export default {
     },
     methods: {
         handleClick(tab, event) {
-            console.log(tab, event);
+           // console.log(tab, event);
         },
-        register(){
+        checkcode(){
             var _this = this,
                 username = this.formLabelAlign.username,
                 password = this.formLabelAlign.password;       
@@ -70,10 +71,17 @@ export default {
                 });
                 return false
             }
+            return true
+        },
+        register(){
+            var _this = this;
+        if(!this.checkcode){
+            return false
+        }
 
-           postRegister.postRegister({
-                username: username,
-                password: password
+           api.postRegister({
+                username: _this.formLabelAlign.username,
+                password: _this.formLabelAlign.password
             })
             .then(res=>{
                 if(res.status === 200){
@@ -89,7 +97,37 @@ export default {
             })
         },
         login(){
-
+            var _this = this;
+            if(!this.checkcode){
+                return false
+            }
+            api.postLogin({
+                username: _this.formLabelAlign.username,
+                password: _this.formLabelAlign.password
+            })
+            .then(res=>{
+                    
+                
+                if(res.data.status === 200){
+                    _this.$message({
+                        message: `${res.data.msg}`,
+                        type: 'success',
+                        duration:500,
+                        onClose:function(){
+                            window.location.href = '/'
+                        }
+                    })
+                }else{
+                    _this.$message({
+                        message: `${res.data.msg}`,
+                        type: 'warning',
+                        duration:2000
+                    })
+                }
+            })
+            .catch(err=>{
+                console.log(err)
+            })
         }
     }
 }

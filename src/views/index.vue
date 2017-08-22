@@ -125,6 +125,10 @@
                         name:'/shoppingCar',
                         txt:'购物车',
                         id:'car'
+                    },
+                    {
+                        name:'/userFeedback',
+                        txt:'用户反馈'
                     }
                 ]
             }
