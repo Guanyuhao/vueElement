@@ -1,6 +1,6 @@
     <template>
         <div class="ueditor">
-            <VueUeditor></VueUeditor>
+            <VueUeditor @ready='editorReady'></VueUeditor>
         </div>
     </template>
     
@@ -10,11 +10,15 @@
         components:{
             VueUeditor
         },
-        name: 'vueUeditor',
+        name: 'uEditor',
         data: function() {	
             return {}
         },
-        methods: {}
+        methods: {
+            editorReady(editorInstance){
+
+            }
+        }
     }
     </script>
     

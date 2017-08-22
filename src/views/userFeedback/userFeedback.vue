@@ -1,16 +1,17 @@
 <template>
 
     <div class="userfeedback">
-        
+        <u-editor></u-editor>
     </div>
 
 </template>
 
 <script>
-import vueUeditor from './vueUeditor'
+import uEditor from './vueUeditor'
+console.log(uEditor)
 export default {
-    comments:{
-        vueUeditor
+    components:{
+        uEditor
     },
     name: 'userFeedback',
     data: function() {	

@@ -27,6 +27,8 @@ const shoppingCar = r => require.ensure([],()=>r(require('@/views/shoppingCar/sh
 const courseManagement = r => require.ensure([],()=>r(require('@/views/courseManagement/courseManagement')),'views')
 //登录注册
 const login  = r =>require.ensure([],()=>r(require('@/Login')),'user')
+//用户反馈
+const userFeedback = r => require.ensure([],()=>r(require('@/views/userFeedback/userFeedback')),'views')
 
 Vue.use(Router)
 export default new Router({
@@ -106,6 +108,10 @@ export default new Router({
     {
       path:'/courseManagement',
       component:courseManagement
+    },
+    {
+      path:'/userFeedback',
+      component:userFeedback      
     }
     
   ]
