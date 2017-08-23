@@ -9,7 +9,7 @@ router.all('/',function(res,req){
 
 
 //读取数据库
-router.post('/register',function(res,req){
+router.all('/register',function(res,req){
   var username = res.body.username
   var password = res.body.password
   var insertData = function(db,callback){
@@ -43,7 +43,7 @@ router.post('/register',function(res,req){
     }
   })  
 })
-router.post('/login',function(req,res){
+router.all('/login',function(req,res){
 
   var username = req.body['username']
   var password = req.body['password']
@@ -67,7 +67,7 @@ router.post('/login',function(req,res){
         req.session.username = result[0].username
          console.log(result[0].username)
          //res.redirect('/')
-    /   res.send('{"msg":"登录成功","status":200}')
+       res.send('{"msg":"登录成功","status":200}')
          //一种路由跳转
        }else{
          console.log(result)
