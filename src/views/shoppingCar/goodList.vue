@@ -113,7 +113,6 @@ export default {
   },
   methods:{
       addCar(index){
-          console.log(index+'goodlist')
           //跨父组件访问
           this.$eventBus.$emit('mappingCar',index)
       },

@@ -18,7 +18,6 @@
                         </router-link>
                     </li>
                 </ul>
-                
         </section>
     </div>
 </template>
@@ -71,6 +70,7 @@
     export default{
         data(){
             return{
+                a:'a',
                 listArr:[
                     {
                         name:'/login',
