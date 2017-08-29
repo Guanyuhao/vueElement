@@ -6,7 +6,9 @@ var vueLoaderConfig = require('./vue-loader.conf')
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
 }
-
+//配置编译入口和输出路径
+//模块resolve的规则
+//配置不同类型模块的处理规则
 module.exports = {
   entry: {
     app: './src/main.js'
@@ -18,20 +20,26 @@ module.exports = {
       ? config.build.assetsPublicPath
       : config.dev.assetsPublicPath
   },
+  //模块resolve的规则
   resolve: {
+     //resolve的后缀名
     extensions: ['.js', '.vue', '.json'],
+    //配置路径别名，比如import Vue from 'vue/dist/vue.common.js'--> import Vue from 'vue'
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
-      '@': resolve('src')
+      '@': resolve('src') //当以@为src目录 resolve是配置的跟目录
     }
   },
+  //配置不同类型的模块处理规则
   module: {
     rules: [
+      //所有.vue使用vue-loader加载
       {
         test: /\.vue$/,
         loader: 'vue-loader',
         options: vueLoaderConfig
       },
+      //src和test文件夹下的.js和.vue文件使用eslint-load
       {
         test: /\.js$/,
         loader: 'babel-loader',

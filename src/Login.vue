@@ -75,10 +75,9 @@ export default {
         },
         register(){
             var _this = this;
-        if(!this.checkcode){
-            return false
-        }
-
+            if(!this.checkcode){
+                return false
+            }
            api.postRegister({
                 username: _this.formLabelAlign.username,
                 password: _this.formLabelAlign.password

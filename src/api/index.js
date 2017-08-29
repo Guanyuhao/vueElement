@@ -2,7 +2,10 @@
 import axios from 'axios'
 import {
 	registerApi,
-	loginApi
+	loginApi,
+	allStageApi,
+	allGradApi,
+	allSubjectByGradeCodeApi
 } from './resource'
 export default {
 	postRegister(config) {
@@ -11,5 +14,14 @@ export default {
 	},
 	postLogin(config){
 		return axios.post(loginApi,config)
+	},
+	getAllStage(params){
+		return axios.get(allStageApi,params)
+	},
+	getAllGrad(params){
+		return axios.get(allGradApi,params)
+	},
+	getAllSubjectByGradeCode(params){
+		return axios.get(allSubjectByGradeCodeApi,params)
 	}
 }

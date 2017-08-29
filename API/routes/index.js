@@ -8,6 +8,7 @@ router.all('/',function(res,req){
 })
 
 
+
 //读取数据库
 router.all('/register',function(res,req){
   var username = res.body.username

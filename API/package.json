@@ -15,6 +15,7 @@
   "devDependencies": {
     "async": "^2.1.4",
     "body-parser": "^1.16.1",
+    "cheerio": "^1.0.0-rc.2",
     "cookie-parser": "^1.4.3",
     "express-session": "^1.15.1",
     "mongodb": "^2.2.22",

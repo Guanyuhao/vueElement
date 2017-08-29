@@ -1,6 +1,7 @@
 <?php
 //header('Access-Control-Allow-Origin: http://www.baidu.com'); //设置http://www.baidu.com允许跨域访问
 //header('Access-Control-Allow-Headers: X-Requested-With,X_Requested_With'); //设置允许的跨域header
+header("content-type:text/html; charset=utf-8");
 date_default_timezone_set("Asia/Chongqing");
 
 error_reporting(E_ERROR);

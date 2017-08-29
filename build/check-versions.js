@@ -1,3 +1,4 @@
+//版本验证 请复制
 var chalk = require('chalk')
 var semver = require('semver')
 var packageConfig = require('../package.json')

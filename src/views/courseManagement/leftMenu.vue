@@ -27,6 +27,15 @@
                 检索小课程
             </el-menu-item>
         </el-submenu>
+        <el-submenu index="smallCourse">
+            <template slot="title">独立课程</template>
+            <el-menu-item index="createCourse">
+                创建独立课程
+            </el-menu-item>
+            <el-menu-item index="searchCourse">
+                独立课程检索
+            </el-menu-item>
+        </el-submenu>
     </el-menu>
 
     </div>
