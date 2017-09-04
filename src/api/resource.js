@@ -10,7 +10,10 @@ const apiResource = {
    loginApi:'/login',
    allStageApi:'/stage?all',
    allGradApi:'/baseGrade?all',
-   allSubjectByGradeCodeApi:'/course/getGrade'
+   allSubjectByGradeCodeApi:'/course/getGrade',
+   getBookTypeByGradSubjectApi:'/bookType/get',
+   getSceneByResourceIdApi:'/tSceneController/getSceneByResourceId/5',
+   getResourceOriginApi:'/rtResourceOriginController/getSceneByResourceId/5'
 };
 
 //export const RecommendActicleListResource = API_ROOT.concat(apiResource.recommendActicleList);
@@ -21,3 +24,7 @@ export const loginApi = NODE_ROOT.concat(apiResource.loginApi);
 export const allStageApi = API_ROOT.concat(apiResource.allStageApi)
 export const allGradApi = API_ROOT.concat(apiResource.allGradApi)
 export const allSubjectByGradeCodeApi = API_ROOT.concat(apiResource.allSubjectByGradeCodeApi)
+export const getBookTypeByGradSubjectApi = API_ROOT.concat(apiResource.getBookTypeByGradSubjectApi)
+export const getSceneByResourceIdApi = API_ROOT.concat(apiResource.getSceneByResourceIdApi)
+export const getResourceOriginApi = API_ROOT.concat(apiResource.getResourceOriginApi)
+ 
