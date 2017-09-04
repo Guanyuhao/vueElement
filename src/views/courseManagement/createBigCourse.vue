@@ -4,7 +4,7 @@
             <h2>创建课程</h2>
         </header> -->
         <section>
-            <div class="courseName">
+        <div class="courseName">
             <el-form :label-position="labelPosition" label-width="80px" :model="formLabelAlign"  :rules="rules" ref="formLabelAlign">
             <el-form-item label="课程名称" prop="name">
                 <el-input v-model="formLabelAlign.name" placeholder="课程名称"></el-input>
