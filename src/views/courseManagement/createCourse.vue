@@ -93,6 +93,7 @@
                 </el-col>
             </el-form-item>
             <!-- 结束 -->
+            <VueUeditor @ready='editorReady' style="width: 500px"></VueUeditor>
 
             </el-form>
             </div>
@@ -102,9 +103,13 @@
 
 <script>
 import api from '@/api/index'
+    import  VueUeditor from 'vue-ueditor'
 
 export default {
     name: 'createCourse',
+    components: {
+        VueUeditor
+    },
     data: function() {	
         return {
             labelPosition: 'top',
