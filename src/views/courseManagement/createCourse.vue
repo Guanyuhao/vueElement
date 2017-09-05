@@ -1,7 +1,7 @@
 <template>
     <div class="create-course">
         <header>
-            <h2>创建课程</h2>
+            <h2 class="wqwqwq">创建课程</h2>
         </header>
         <section>
             <div class="courseName">
@@ -93,9 +93,15 @@
                 </el-col>
             </el-form-item>
             <!-- 结束 -->
-            <VueUeditor @ready='editorReady' style="width: 500px"></VueUeditor>
-
+            <!-- <VueUeditor @ready='editorReady' style="width: 500px"></VueUeditor> -->
+                    <div class="editor-container">
+                        <p v-on:click="getUEContent()">获取文本内容</p>
+                      <UE  :ueditorConfig = config1 ref="ue1"></UE>
+                       <p v-on:click="getUEContent2()">获取文本内容</p>
+                      <UE  :ueditorConfig = config2 ref="ue2"></UE>
+                    </div>
             </el-form>
+           
             </div>
         </section>
     </div>
@@ -103,13 +109,11 @@
 
 <script>
 import api from '@/api/index'
-    import  VueUeditor from 'vue-ueditor'
-
+// import  VueUeditor from 'vue-ueditor'
+import UE from "../../components/editor/editor.vue"
 export default {
     name: 'createCourse',
-    components: {
-        VueUeditor
-    },
+    
     data: function() {	
         return {
             labelPosition: 'top',
@@ -156,7 +160,16 @@ export default {
             stageArr:[],
             stageVal:'1',
             gradVal:'11',
-            gradArr:[]
+            gradArr:[],
+            //editor
+            config1: {
+              initialFrameWidth: null,
+              initialFrameHeight: 350
+            },
+            config2: {
+              initialFrameWidth: null,
+              initialFrameHeight: 350
+            }
         }
     },
     created(){
@@ -217,7 +230,25 @@ export default {
                 let arr = res.data
                 console.log(arr)
             })
+        },
+        getUEContent() {
+            let content = this.$refs.ue1.getUEContent();
+            console.log(content)
+            // this.$notify({
+            //   title: '获取成功，可在控制台查看！',
+            //   message: content,
+            //   type: 'success'
+            // });
+            // console.log(content)
+        },
+        getUEContent2(){
+             let content = this.$refs.ue2.getUEContent2();
+            console.log(content)
         }
+      
+    },
+    components: {
+        UE,
     }
 }
 </script>
@@ -247,6 +278,13 @@ export default {
             }
         }
     }
+    .info{
+        border-radius: 10px;
+        line-height: 20px;
+        padding: 10px;
+        margin: 10px;
+        background-color: #ffffff;
+      }
 }
 
 </style>

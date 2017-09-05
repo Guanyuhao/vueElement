@@ -4,10 +4,20 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import Vuex from 'vuex'
+import $ from "jquery"
 //引入 element ui
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-default/index.css'
 import './common/style/reset.scss'
+//引入eidtor
+import "../static/ueditor/ueditor.config.js"
+import "../static/ueditor/ueditor.all.min.js"
+import "../static/ueditor/lang/zh-cn/zh-cn.js"
+import "../static/ueditor/ueditor.parse.min.js"
+
+import "../static/ueditor/kityformula-plugin/addKityFormulaDialog.js"
+import "../static/ueditor/kityformula-plugin/getKfContent.js"
+import "../static/ueditor/kityformula-plugin/defaultFilterFix.js"
 //上啦下滑 插件
 import VueSuperScroller from 'vue-super-scroller'
 Vue.use(VueSuperScroller)
