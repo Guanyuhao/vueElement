@@ -13,7 +13,9 @@ const apiResource = {
    allSubjectByGradeCodeApi:'/course/getGrade',
    getBookTypeByGradSubjectApi:'/bookType/get',
    getSceneByResourceIdApi:'/tSceneController/getSceneByResourceId/5',
-   getResourceOriginApi:'/rtResourceOriginController/getSceneByResourceId/5'
+   getResourceOriginApi:'/rtResourceOriginController/getSceneByResourceId/5',
+   allSubjectApi:'/subject/all',
+   allBigCoursApi:'/courseBig/all'
 };
 
 //export const RecommendActicleListResource = API_ROOT.concat(apiResource.recommendActicleList);
@@ -27,4 +29,5 @@ export const allSubjectByGradeCodeApi = API_ROOT.concat(apiResource.allSubjectBy
 export const getBookTypeByGradSubjectApi = API_ROOT.concat(apiResource.getBookTypeByGradSubjectApi)
 export const getSceneByResourceIdApi = API_ROOT.concat(apiResource.getSceneByResourceIdApi)
 export const getResourceOriginApi = API_ROOT.concat(apiResource.getResourceOriginApi)
- 
+export const allSubjectApi = API_ROOT.concat(apiResource.allSubjectApi)
+export const allBigCoursApi = API_ROOT.concat(apiResource.allBigCoursApi)

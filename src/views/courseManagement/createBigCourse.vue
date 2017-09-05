@@ -326,7 +326,7 @@ export default {
         changeOriginIndex(curIndex){
 
             this.originCurrIndex=curIndex
-            //菜坑 $set
+            //坑 $set
            // this.$set(this.originCurrIndex,'i',curIndex)
         }
     }
