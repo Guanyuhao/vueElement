@@ -4,7 +4,7 @@
         <section>
             <div class="search">
                 <el-input placeholder="code" >
-                    <el-button slot="append" icon="search"></el-button>
+                    <el-button slot="append" icon="search" @click="searchBigCourse"></el-button>
                 </el-input>
             </div>
             <div class="filterChoice">
@@ -34,7 +34,9 @@
                 </el-tag> 
             </div>
             <ul class="bigCourseList">
-
+                <li v-for="bigCourse in bigCouserArr" :key="bigCourse.id">
+                    {{bigCourse.name}}
+                </li>
             </ul>
         </section>
     </div>
@@ -61,7 +63,8 @@ export default {
                 }
             ],
             bookTypeArr:[],
-            bookTypeCurrIndex:0
+            bookTypeCurrIndex:0,
+            bigCouserArr:[]
         }
     },
     created(){
@@ -71,22 +74,12 @@ export default {
         init(){
             this.getAllGrade()
             this.getCourseCategory()
+            this.getBigCourse(11,1)
         },
-        getAllGrade(){
-            let _this = this
-            API.getAllGrad()
-            .then(res=>{
-                let arr = res.data
-                arr.forEach(function(e,i){
-                    this.gradeArr.push({
-                        code: e.gradeCode,
-                        name:e.gradeName,
-                        id:e.id
-                    })
-                },_this)
-            })
-            .catch(e=> console.log(e)) 
+        searchBigCourse(){
+
         },
+        
         checkFilterArr(code){
             //名字唯一 封装服用 判断重载
             let Drag = false
@@ -152,6 +145,21 @@ export default {
         restFilter(){
             this.filterArr = [];
         },
+        getAllGrade(){
+            let _this = this
+            API.getAllGrad()
+            .then(res=>{
+                let arr = res.data
+                arr.forEach(function(e,i){
+                    this.gradeArr.push({
+                        code: e.gradeCode,
+                        name:e.gradeName,
+                        id:e.id
+                    })
+                },_this)
+            })
+            .catch(e=> console.log(e)) 
+        },
         getCourseCategory(){
             let _this = this
             API.getCourseCategory()
@@ -165,7 +173,7 @@ export default {
                     })
                 },_this)
              //初始化教材
-                _this.getBookType(11,1)   
+                _this.getBookType(11,1)
             })
             .catch(e=>console.log(e))
         },
@@ -186,6 +194,27 @@ export default {
                 _this.bookTypeArr = arrs;
             })
             .catch(e=>console.log(e))          
+        },
+        getBigCourse(gradeCode,subjectCode,bookType){
+            let _this = this,
+                arrs = [];
+            API.getBigCourse({
+                gradeCode,
+                subjectCode,
+                cp:'1',
+                bookType
+            })
+            .then(res=>{
+                let arr = res.data.beanData
+                console.log(arr)
+                arr.forEach(function(e,i){
+                    arrs.push({
+                        name:e.fullName
+                    })
+                })
+                _this.bigCouserArr = arrs
+            })
+            .catch(e=>console.log(e))
         }
     }
 }

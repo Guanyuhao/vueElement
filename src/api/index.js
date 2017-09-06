@@ -9,7 +9,8 @@ import {
 	getBookTypeByGradSubjectApi,
 	getSceneByResourceIdApi,
 	getResourceOriginApi,
-	allSubjectApi
+	allSubjectApi,
+	allBigCoursApi
 } from './resource'
 export default {
 	postRegister(config) {
@@ -39,5 +40,8 @@ export default {
 	},
 	getCourseCategory(){
 		return axios.get(allSubjectApi)
+	},
+	getBigCourse(params){
+		return axios.post(allBigCoursApi,params)
 	}
 }
