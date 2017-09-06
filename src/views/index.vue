@@ -116,11 +116,11 @@
                     //     txt:'工具箱',
                     //     id:6
                     // },
-                    {
-                        name:'/Datavisualization',
-                        txt:'数据可视化',
-                        id:7
-                    },
+                    // {
+                    //     name:'/Datavisualization',
+                    //     txt:'数据可视化',
+                    //     id:7
+                    // },
                     {
                         name:'/shoppingCar',
                         txt:'购物车',

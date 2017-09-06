@@ -124,7 +124,7 @@
 </template>
 
 <script>
-import api from '@/api/index'
+import API from '@/api/index'
 // import  VueUeditor from 'vue-ueditor'
 import UE from "../../components/editor/editor.vue"
 export default {
