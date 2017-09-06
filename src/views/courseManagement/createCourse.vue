@@ -1,8 +1,6 @@
 <template>
     <div class="create-course">
-        <header>
-            <h2 class="wqwqwq">创建课程</h2>
-        </header>
+        
         <section>
             <div class="courseName">
             <el-form :label-position="labelPosition" label-width="80px" :model="formLabelAlign"  :rules="rules" ref="formLabelAlign">

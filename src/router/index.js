@@ -32,6 +32,7 @@ const userFeedback = r => require.ensure([],()=>r(require('@/views/userFeedback/
 
 Vue.use(Router)
 export default new Router({
+  mode: 'history',
   routes: [
     {
       path:'/login',

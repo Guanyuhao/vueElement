@@ -55,10 +55,21 @@ goodlist交互Car
 ```
 >4.vueX请看教程=>https://vuex.vuejs.org/zh-cn/
 # 配置台实现登录注册 
->数据库noSQL=>mongoDB,语言nodeJS **前后端完美分离
+>数据库noSQL=>mongoDB,语言nodeJS ***前后端不能乱！！！
 ## 实现逻辑
 ```
   前端请求node，使用webpack代理解决跨域
   node操作数据库处理相关逻辑后，返回数据给前端
   前端通过返回数据再做呈现处理
 ```  
+>5.Router
+#路由说明
+```
+	1>好看的url，启用路由的 history 模式 /#/login => /login ***需要后端小配合
+	2>路由的导航钩子的3部曲=>Enter Update Leaver
+	3>路由元信息=>meta自段用来在前端路由管理权限
+	4>路由过度效果=>使用标签<transition>
+	5>导航完全前后的数据获取行为适用于依赖路由params.id一些页面
+	6>完成页面跳转的对滚动条行为的控制=>scrollBehavior
+	7>路由懒加载=>组件按组分块
+```

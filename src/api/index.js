@@ -5,7 +5,11 @@ import {
 	loginApi,
 	allStageApi,
 	allGradApi,
-	allSubjectByGradeCodeApi
+	allSubjectByGradeCodeApi,
+	getBookTypeByGradSubjectApi,
+	getSceneByResourceIdApi,
+	getResourceOriginApi,
+	allSubjectApi
 } from './resource'
 export default {
 	postRegister(config) {
@@ -15,13 +19,25 @@ export default {
 	postLogin(config){
 		return axios.post(loginApi,config)
 	},
-	getAllStage(params){
-		return axios.get(allStageApi,params)
+	getAllStage(){
+		return axios.get(allStageApi)
 	},
-	getAllGrad(params){
-		return axios.get(allGradApi,params)
+	getAllGrad(){
+		return axios.get(allGradApi)
 	},
 	getAllSubjectByGradeCode(params){
-		return axios.get(allSubjectByGradeCodeApi,params)
+		return axios.get(allSubjectByGradeCodeApi+params)
+	},
+	getBookType(params){
+		return axios.get(getBookTypeByGradSubjectApi+params)
+	},
+	getCourseScene(){
+		return axios.get(getSceneByResourceIdApi)
+	},
+	getCourseOrigin(){
+		return axios.get(getResourceOriginApi)
+	},
+	getCourseCategory(){
+		return axios.get(allSubjectApi)
 	}
 }

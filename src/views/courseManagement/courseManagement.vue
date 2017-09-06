@@ -4,7 +4,7 @@
             <el-row>
                 <el-col :span="24">
                     <div class="grid-content bg-purple-dark">
-                        <h1>课程管理</h1>
+                        <h1>{{currentTitle}}</h1>
                     </div>
                     </el-col>
             </el-row>
@@ -27,29 +27,49 @@
 
 <script>
 import leftMenu from './leftMenu'
-import createCourse from './createCourse'
-import searchCourse from './searchCourse'
+import createBigCourse from './createBigCourse'
+import searchBigCourse from './searchBigCourse'
 export default {
     components:{
-        leftMenu,createCourse,searchCourse
+        leftMenu,createBigCourse,searchBigCourse
     },
     name: 'createManagement',
     data: function() {	
         return {
-            currentView:'createCourse'
+            currentView:'createBigCourse',
+            currentTitle:'创建大课程'
         }
     },
     methods: {
         showMsgFromChild(name){
+           
             this.currentView = name
+            if(name == 'createBigCourse'){
+                this.currentTitle = '创建大课程'
+            }else if(name == 'searchBigCourse'){
+                this.currentTitle = '大课程检索'
+                
+            }else if(name == 'createSmallCourse'){
+                this.currentTitle = '创建小课程'
+
+            }else if(name == 'searchSmallCourse'){
+                this.currentTitle = '小课程检索'
+
+            }else if(name == 'createIndependentCourse'){
+                this.currentTitle = '创建独立课程'
+
+            }else if(name == 'searchIndependentCourse'){
+                this.currentTitle = '独立课程检索'
+
+            }else if(name == 'courseCategory'){
+                this.currentTitle = '课程类别'
+            }
         }
     }
 }
 </script>
 
-<style scoped>
 
-</style>
 <style scoped>
   .bg-purple-dark {
     background: #99a9bf;
@@ -70,6 +90,6 @@ export default {
     background-color: #f9fafc;
   }
   .right-padding{
-      padding:2% 10%;
+      padding:2% 5%;
   }
 </style>

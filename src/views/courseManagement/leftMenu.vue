@@ -11,31 +11,34 @@
         </div> -->
         <el-submenu index="bigCourse">
             <template slot="title">大课程</template>
-            <el-menu-item index="createCourse">
+            <el-menu-item index="createBigCourse">
                 创建课程
             </el-menu-item>
-            <el-menu-item index="searchCourse">
+            <el-menu-item index="searchBigCourse">
                 检索课程
             </el-menu-item>
         </el-submenu>
         <el-submenu index="smallCourse">
             <template slot="title">小课程</template>
-            <el-menu-item index="createCourse">
+            <el-menu-item index="createSmallCourse">
                 创建小课程
             </el-menu-item>
-            <el-menu-item index="searchCourse">
+            <el-menu-item index="searchSmallCourse">
                 检索小课程
             </el-menu-item>
         </el-submenu>
-        <el-submenu index="smallCourse">
+        <el-submenu index="independentCourse">
             <template slot="title">独立课程</template>
-            <el-menu-item index="createCourse">
+            <el-menu-item index="createIndependentCourse">
                 创建独立课程
             </el-menu-item>
-            <el-menu-item index="searchCourse">
+            <el-menu-item index="searchIndependentCourse">
                 独立课程检索
             </el-menu-item>
         </el-submenu>
+        <el-menu-item index="courseCategory">
+                课程类别
+        </el-menu-item>
     </el-menu>
 
     </div>
