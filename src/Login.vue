@@ -94,6 +94,7 @@ export default {
             .catch(err=>{
                 console.log(err)
             })
+
         },
         login(){
             var _this = this;
@@ -138,7 +139,7 @@ export default {
         width: 100%;
         height: 100%;
         // background-color: #99a9bf;
-        background-image:url('/static/images/bg-love.jpg');
+        /*background-image:url('/static/images/bg-love.jpg');*/
         background-size:cover;
         background-repeat:no-repeat;
         position: relative;

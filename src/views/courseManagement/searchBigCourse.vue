@@ -82,6 +82,7 @@ export default {
         
         checkFilterArr(code){
             //名字唯一 封装服用 判断重载
+            
             let Drag = false
             this.filterArr.forEach(function(e,i){
                  if(e[code]){

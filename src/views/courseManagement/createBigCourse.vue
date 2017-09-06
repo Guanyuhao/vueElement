@@ -1,129 +1,137 @@
 <template>
-    <div class="create-big-course">
-        <!-- <header>
-            <h2>创建课程</h2>
-        </header> -->
-        <section>
-        <div class="courseName">
-            <el-form :label-position="labelPosition" label-width="80px" :model="formLabelAlign"  :rules="rules" ref="formLabelAlign">
-            <el-form-item label="课程名称" prop="name">
-                <el-input v-model="formLabelAlign.name" placeholder="课程名称"></el-input>
-            </el-form-item>
-            <el-form-item label="课程类型">
-                    <el-select v-model="value" >
-                        <el-option
-                        v-for="item in options"
-                        :key="item.value"
-                        :label="item.label"
-                        :value="item.value">
-                        </el-option>
-                    </el-select>
-            </el-form-item>
-            <el-form-item label="业务编号" prop="type">
-                <el-input v-model="formLabelAlign.type" placeholder='业务编号'></el-input>
-            </el-form-item>
-            <el-form-item required class="courseStart">
-                <el-col :span="4"  >
-                    <el-form-item prop="date1"  label="开课时间" >
-                        <el-date-picker type="date" placeholder="选择日期" v-model="formLabelAlign.date1" style="width: 100%;"></el-date-picker>
-                    </el-form-item>
-                </el-col>
-              
-                <el-col :span="3">
-                    <el-form-item  label="课程建议价格" >
-                        <el-input-number  v-model="formLabelAlign.coursePrice" style="width: 100%;"   :controls="false"></el-input-number>
-                    </el-form-item>
-                </el-col>
+    <div class="create-course">
+        <div class="create-big-course">
+            <section>
+            <div class="courseName">
+                <el-form :label-position="labelPosition" label-width="80px" :model="formLabelAlign"  :rules="rules" ref="formLabelAlign">
+                <el-form-item label="课程名称" prop="name">
+                    <el-input v-model="formLabelAlign.name" placeholder="课程名称"></el-input>
+                </el-form-item>
+                <el-form-item label="课程类型">
+                        <el-select v-model="value" >
+                            <el-option
+                            v-for="item in options"
+                            :key="item.value"
+                            :label="item.label"
+                            :value="item.value">
+                            </el-option>
+                        </el-select>
+                </el-form-item>
+                <el-form-item label="业务编号" prop="type">
+                    <el-input v-model="formLabelAlign.type" placeholder='业务编号'></el-input>
+                </el-form-item>
+                <el-form-item required class="courseStart">
+                    <el-col :span="4"  >
+                        <el-form-item prop="date1"  label="开课时间" >
+                            <el-date-picker type="date" placeholder="选择日期" v-model="formLabelAlign.date1" style="width: 100%;"></el-date-picker>
+                        </el-form-item>
+                    </el-col>
+                  
+                    <el-col :span="3">
+                        <el-form-item  label="课程建议价格" >
+                            <el-input-number  v-model="formLabelAlign.coursePrice" style="width: 100%;"   :controls="false"></el-input-number>
+                        </el-form-item>
+                    </el-col>
+                   
+                    <el-col :span="3">
+                        <el-form-item label="课程总数">
+                            <el-input-number  v-model="formLabelAlign.courseSum" style="width: 100%;"   :controls="false"></el-input-number>
+                        </el-form-item>
+                    </el-col>
+                </el-form-item>
+                <!-- 学段 -->
+                <el-form-item  class="stageAll">
+                    <el-col :span="3">
+                        <el-form-item label="学段">
+                            <el-select v-model="stageVal"  style="width:100%"> 
+                                <el-option
+                                v-for="stage in stageArr"
+                                :key="stage.id"
+                                :label="stage.label"
+                                :value="stage.value">
+                                </el-option>
+                            </el-select>
+                        </el-form-item>
+                    </el-col>
+                    <el-col :span="3">
+                        <el-form-item label="年级">
+                            <el-select v-model="gradVal"  style="width:100%" @change="passGradCode"> 
+                                <el-option
+                                v-for="grad in gradArr"
+                                :key="grad.id"
+                                :label="grad.label"
+                                :value="grad.value">
+                                </el-option>
+                            </el-select>
+                        </el-form-item>
+                    </el-col>
+                    <el-col :span="3">
+                        <el-form-item label="学科">
+                            <el-select v-model="subjectVal" style="width:100%" @change="passSubjectCode"> 
+                                <el-option
+                                v-for="subject in subjectArr"
+                                :key="subject.id"
+                                :label="subject.label"
+                                :value="subject.value">
+                                </el-option>
+                            </el-select>
+                        </el-form-item>
+                    </el-col>
+                    <el-col :span="3">
+                        <el-form-item label="教材">
+                            <el-select v-model="bookTypeVal" style="width:100%"> 
+                                <el-option
+                                v-for="bookType in bookTypeArr"
+                                :key="bookType.id"
+                                :label="bookType.label"
+                                :value="bookType.value">
+                                </el-option>
+                            </el-select>
+                        </el-form-item>
+                    </el-col>
+                </el-form-item>
+                <!-- 结束 -->
+                <!-- <VueUeditor @ready='editorReady' style="width: 500px"></VueUeditor> -->
+                        <div class="editor-container">
+                            <p v-on:click="getUEContent()">获取文本内容</p>
+                          <UE  :ueditorConfig = config1 ref="ue1"></UE>
+                           <p v-on:click="getUEContent2()">获取文本内容</p>
+                          <UE  :ueditorConfig = config2 ref="ue2"></UE>
+                        </div>
+                <!-- 结束  -->
+                <el-form-item label="课程场景" class="courseScene">
+                    <el-tag v-for="(scene,index) in sceneArr" :key="scene.id" :type="sceneCurrIndex==index?'danger':''" @click.native="changeSceneIndex(index)">
+                        {{scene.name}}
+                    </el-tag>
+                </el-form-item>
+                
+                <el-form-item label="课程来源" class='courseOrigin'>
+                    <el-tag v-for="(origin,index) in originArr" :key="origin.id" :type="originCurrIndex==index?'danger':''" @click.native="changeOriginIndex(index)">
+                        {{origin.name}}
+                    </el-tag>
+
+                </el-form-item>
+               <!-- @ready='editorReady' -->
+                <!-- <VueUeditor style="width: 500px"></VueUeditor> -->
+
+
+                </el-form>
                
-                <el-col :span="3">
-                    <el-form-item label="课程总数">
-                        <el-input-number  v-model="formLabelAlign.courseSum" style="width: 100%;"   :controls="false"></el-input-number>
-                    </el-form-item>
-                </el-col>
-            </el-form-item>
-            <!-- 学段 -->
-            <el-form-item  class="stageAll">
-                <el-col :span="3">
-                    <el-form-item label="学段">
-                        <el-select v-model="stageVal"  style="width:100%"> 
-                            <el-option
-                            v-for="stage in stageArr"
-                            :key="stage.id"
-                            :label="stage.label"
-                            :value="stage.value">
-                            </el-option>
-                        </el-select>
-                    </el-form-item>
-                </el-col>
-                <el-col :span="3">
-                    <el-form-item label="年级">
-                        <el-select v-model="gradVal"  style="width:100%" @change="passGradCode"> 
-                            <el-option
-                            v-for="grad in gradArr"
-                            :key="grad.id"
-                            :label="grad.label"
-                            :value="grad.value">
-                            </el-option>
-                        </el-select>
-                    </el-form-item>
-                </el-col>
-                <el-col :span="3">
-                    <el-form-item label="学科">
-                        <el-select v-model="subjectVal" style="width:100%" @change="passSubjectCode"> 
-                            <el-option
-                            v-for="subject in subjectArr"
-                            :key="subject.id"
-                            :label="subject.label"
-                            :value="subject.value">
-                            </el-option>
-                        </el-select>
-                    </el-form-item>
-                </el-col>
-                <el-col :span="3">
-                    <el-form-item label="教材">
-                        <el-select v-model="bookTypeVal" style="width:100%"> 
-                            <el-option
-                            v-for="bookType in bookTypeArr"
-                            :key="bookType.id"
-                            :label="bookType.label"
-                            :value="bookType.value">
-                            </el-option>
-                        </el-select>
-                    </el-form-item>
-                </el-col>
-            </el-form-item>
-            <!-- 结束  -->
-            <el-form-item label="课程场景" class="courseScene">
-                <el-tag v-for="(scene,index) in sceneArr" :key="scene.id" :type="sceneCurrIndex==index?'danger':''" @click.native="changeSceneIndex(index)">
-                    {{scene.name}}
-                </el-tag>
-            </el-form-item>
-            
-            <el-form-item label="课程来源" class='courseOrigin'>
-                <el-tag v-for="(origin,index) in originArr" :key="origin.id" :type="originCurrIndex==index?'danger':''" @click.native="changeOriginIndex(index)">
-                    {{origin.name}}
-                </el-tag>
-
-            </el-form-item>
-           <!-- @ready='editorReady' -->
-            <VueUeditor style="width: 500px"></VueUeditor>
-
-
-            </el-form>
-            </div>
-        </section>
+                </div>
+            </section>
+        </div>
     </div>
 </template>
 
 <script>
-
-import API from '@/api/index'
-import  VueUeditor from 'vue-ueditor'
-
+import api from '@/api/index'
+// import  VueUeditor from 'vue-ueditor'
+import UE from "../../components/editor/editor.vue"
 export default {
+
     name: 'searchBigCourse',
     components: {
-        VueUeditor
+        // VueUeditor
     },
     data: function() {	
         return {
@@ -172,6 +180,15 @@ export default {
             stageVal:'1',
             gradVal:'11',
             gradArr:[],
+            //editor
+            config1: {
+              initialFrameWidth: null,
+              initialFrameHeight: 350
+            },
+            config2: {
+              initialFrameWidth: null,
+              initialFrameHeight: 350
+            },
             subjectArr:[],
             subjectVal:'1',
             bookTypeArr:[],
@@ -268,6 +285,20 @@ export default {
                 _this.subjectArr = arrs;
                
             })
+        },
+        getUEContent() {
+            let content = this.$refs.ue1.getUEContent();
+            console.log(content)
+            // this.$notify({
+            //   title: '获取成功，可在控制台查看！',
+            //   message: content,
+            //   type: 'success'
+            // });
+            // console.log(content)
+        },
+        getUEContent2(){
+             let content = this.$refs.ue2.getUEContent2();
+            console.log(content)
             .catch(e=>console.log(e))            
         },
         getBookType(subjectCode,gradCode){
@@ -329,6 +360,10 @@ export default {
             //坑 $set
            // this.$set(this.originCurrIndex,'i',curIndex)
         }
+      
+    },
+    components: {
+        UE,
     }
 }
 </script>
@@ -372,6 +407,13 @@ export default {
             }           
         }
     }
+    .info{
+        border-radius: 10px;
+        line-height: 20px;
+        padding: 10px;
+        margin: 10px;
+        background-color: #ffffff;
+      }
 }
 
 </style>
