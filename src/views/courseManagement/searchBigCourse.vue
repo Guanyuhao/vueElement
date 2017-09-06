@@ -21,7 +21,7 @@
             </div>
             <div class="filterFul">
                
-               <span class="span-title"> 学科：</span><el-tag v-for="(grade,index) in gradeArr" :key="grade.id" :type="gradeCurrIndex==index?'danger':''" @click.native="changeGradeIndex(index,grade.code)">
+               <span class="span-title"> 学年：</span><el-tag v-for="(grade,index) in gradeArr" :key="grade.id" :type="gradeCurrIndex==index?'danger':''" @click.native="changeGradeIndex(index,grade.code)">
                     {{grade.name}}
                 </el-tag>
                 <br/>
@@ -29,15 +29,67 @@
                     {{course.name}}
                 </el-tag>
                  <br/>
-                <span class="span-title"> 教材：</span><el-tag v-for="(bookType,index) in bookTypeArr" :key="bookType.id" :type="bookTypeCurrIndex==index?'danger':''" @click.native="changeBookTypeIndex(index)">
+                <span class="span-title"> 教材：</span><el-tag v-for="(bookType,index) in bookTypeArr" :key="bookType.id" :type="bookTypeCurrIndex+1==index?'danger':''" @click.native="changeBookTypeIndex(index)">
                     {{bookType.name}}
                 </el-tag> 
             </div>
-            <ul class="bigCourseList">
+            <!-- <ul class="bigCourseList">
                 <li v-for="bigCourse in bigCouserArr" :key="bigCourse.id">
                     {{bigCourse.name}}
                 </li>
-            </ul>
+            </ul> -->
+            <div class="bigCourseList">
+                <el-table
+                    :data="bigCouserArr"
+                    border
+                    style="width: 100%">
+                    <el-table-column
+                    label="课程Code"
+                    width="">
+                    <template scope="scope">
+                        <span style="margin-left: 10px">{{ scope.row.id }}</span>
+                    </template>
+                    </el-table-column>
+                    <el-table-column
+                    label="课程内容"
+                    width="300">
+                    <template scope="scope">
+                        <el-popover trigger="hover" placement="top">
+                        <p>学年: {{ scope.row.grade }}</p>
+                        <p>学科: {{ scope.row.subject }}</p>
+                        <p>教材: {{ scope.row.book }}</p>                                  
+                        <div slot="reference" class="name-wrapper">
+                            <el-tag>{{ scope.row.name }}</el-tag>
+                        </div>
+                        </el-popover>
+                    </template>
+                    </el-table-column>
+                    <el-table-column label="操作">
+                    <template scope="scope">
+                        <el-button
+                        size="small"
+                        @click="handleEditor(scope.$index, scope.row)">编辑
+                        </el-button>
+                        <el-button
+                        size="small"
+                        type="danger"
+                        @click="handleDelete(scope.$index, scope.row)">删除
+                        </el-button>
+                    </template>
+                    </el-table-column>
+                </el-table>
+                <el-pagination
+                    @size-change="handleSizeChange"
+                    @current-change="handleCurrentChange"
+                    :current-page="currPageNum"
+                    :page-sizes="[5, 10]"
+                    :page-size="currPageSize"
+                    layout="total, sizes, prev, pager, next, jumper"
+                    :total="totalNum">
+                </el-pagination>
+            </div>
+
+
         </section>
     </div>
 </template>
@@ -63,8 +115,11 @@ export default {
                 }
             ],
             bookTypeArr:[],
-            bookTypeCurrIndex:0,
-            bigCouserArr:[]
+            bookTypeCurrIndex:-2,
+            bigCouserArr:[],
+            currPageSize:5, //一页几个
+            totalNum:0, //总条数
+            currPageNum:1
         }
     },
     created(){
@@ -74,21 +129,65 @@ export default {
         init(){
             this.getAllGrade()
             this.getCourseCategory()
-            this.getBigCourse(11,1)
+            //初始化默认请求
+            this.getBigCourse()
         },
         searchBigCourse(){
-
+            //配置中 gradeCode subjectCode bookType为动态获取
+            let l = this.filterArr.length;
+            if(l<2){
+                this.$message({
+                    message: '学科与课程是必选的',
+                    type: 'warning'
+                });
+                return false
+            }
+            //更新list
+            this.getBigCourse()
         },
-        
+        handleEditor(index,row){
+           
+            //跳转课程详情
+            this.$eventBus.$emit('jumpBigCourseDetail',row)
+        },
+        handleDelete(index, row) {
+            //console.log(index, row);
+            this.$confirm('此操作将永久删除该文件, 是否继续?', '提示', {
+                confirmButtonText: '确定',
+                cancelButtonText: '取消',
+                type: 'warning'
+            }).then(() => {
+                this.$message({
+                    type: 'success',
+                    message: '删除成功!'
+                });
+                this.bigCouserArr.splice(index,1)
+            }).catch(() => {
+                this.$message({
+                    type: 'info',
+                    message: '已取消删除'
+                });          
+            });
+           
+        },
+        handleCurrentChange(val){
+           
+            this.currPageNum = val
+            this.getBigCourse()
+        },
+        handleSizeChange(val){
+           this.currPageSize = val
+           this.getBigCourse()
+        },
         checkFilterArr(code){
-            //名字唯一 封装服用 判断重载
+            //筛选数组 校验
             
             let Drag = false
             this.filterArr.forEach(function(e,i){
                  if(e[code]){
                      //存在
                      Drag = i+''
-                     //0 反出去没用
+                     //不接受数字0
                     return false
                  }
             },this)    
@@ -127,17 +226,27 @@ export default {
            this.getBookType(this.gradeArr[this.gradeCurrIndex].code,this.courseArr[this.courseCurrIndex].code)            
         },
         changeBookTypeIndex(index){
-            this.bookTypeCurrIndex = index
-           
-               if(this.checkFilterArr('bookId')){
-                   this.filterArr[this.checkFilterArr('bookId')].name = this.bookTypeArr[index].name 
-                    this.filterArr[this.checkFilterArr('bookId')].bookId = this.bookTypeArr[index].code
-               }else{
-                    this.filterArr.push({
-                        name:this.bookTypeArr[index].name,
-                        bookId: this.bookTypeArr[index].code 
-                    })
-               }
+            //不让教材默认选择
+            //再次点去取消样式
+            if( this.bookTypeCurrIndex == index-1 ){
+                //删除一下筛选数组中的数据
+                if(this.checkFilterArr('bookId')){
+                    this.filterArr.splice(this.checkFilterArr('bookId'),1)
+                    this.bookTypeCurrIndex = -2
+                }                
+                return false
+            }else{
+                this.bookTypeCurrIndex = index-1
+            }  
+            if(this.checkFilterArr('bookId')){
+                this.filterArr[this.checkFilterArr('bookId')].name = this.bookTypeArr[index].name 
+                this.filterArr[this.checkFilterArr('bookId')].bookId = this.bookTypeArr[index].code
+            }else{
+                this.filterArr.push({
+                    name:this.bookTypeArr[index].name,
+                    bookId: this.bookTypeArr[index].code 
+                })
+            }
            
         },
         handleCloseTag(index){
@@ -176,7 +285,7 @@ export default {
              //初始化教材
                 _this.getBookType(11,1)
             })
-            .catch(e=>console.log(e))
+            .catch(e=>console.log(e)) 
         },
          getBookType(gradCode,subjectCode){
             let _this = this
@@ -196,21 +305,47 @@ export default {
             })
             .catch(e=>console.log(e))          
         },
-        getBigCourse(gradeCode,subjectCode,bookType){
+        getBigCourse(opt){
+            //cp --分页 config 参数配置
+            //单独做一个教材版本的配置
+            let bookType = '',
+                book = '';
+            if( this.checkFilterArr('bookId') ){
+                bookType = this.filterArr[this.checkFilterArr('bookId')].bookId
+                book = this.filterArr[this.checkFilterArr('bookId')].name
+            }
+           
             let _this = this,
-                arrs = [];
-            API.getBigCourse({
-                gradeCode,
-                subjectCode,
-                cp:'1',
-                bookType
-            })
+                arrs = [],
+                subjectCode = this.filterArr[this.checkFilterArr('subjectCode')].subjectCode,
+                subject = this.filterArr[this.checkFilterArr('subjectCode')].name,
+                gradeCode = this.filterArr[this.checkFilterArr('gradeCode')].gradeCode,
+                grade = this.filterArr[this.checkFilterArr('gradeCode')].name,
+                cp = this.currPageNum,
+                pageSize = this.currPageSize,
+                config = {
+                    gradeCode,
+                    subjectCode,
+                    bookType,
+                    cp,
+                    pageSize
+
+                };
+            if(opt){Object.assign(config,opt)}  //复制对象 返回目标对象且修改目标对象  
+            API.getBigCourse(config)
             .then(res=>{
                 let arr = res.data.beanData
-                console.log(arr)
+                let data = res.data
+                //
+                this.totalNum =  data.item
+                
                 arr.forEach(function(e,i){
                     arrs.push({
-                        name:e.fullName
+                        name:e.fullName,
+                        id:e.id,
+                        subject,
+                        grade,
+                        book
                     })
                 })
                 _this.bigCouserArr = arrs
@@ -251,6 +386,10 @@ export default {
                    padding: 1%;
                    font-size: 14px;
                }
+           }
+           .bigCourseList{
+               max-width: 1000px;
+                margin-top:20px;              
            }
        }
     }

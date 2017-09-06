@@ -18,7 +18,7 @@
                  <el-col :span="20" class="right-padding">
                     <!-- 动态切换组件不可后退，嵌套路由ok -->
                     <component :is="currentView"></component>
-               
+             
                  </el-col>
              </el-row>
         </section>
@@ -29,9 +29,10 @@
 import leftMenu from './leftMenu'
 import createBigCourse from './createBigCourse'
 import searchBigCourse from './searchBigCourse'
+import bigCoursedetail from './bigCourseDetail'
 export default {
     components:{
-        leftMenu,createBigCourse,searchBigCourse
+        leftMenu,createBigCourse,searchBigCourse,bigCoursedetail
     },
     name: 'createManagement',
     data: function() {	
@@ -39,6 +40,13 @@ export default {
             currentView:'createBigCourse',
             currentTitle:'创建大课程'
         }
+    },
+    mounted(){
+        this.$eventBus.$on('jumpBigCourseDetail',function(row){
+            console.log(row)
+            this.currentView = 'bigCoursedetail'
+            console.log( this.currentView)
+        })
     },
     methods: {
         showMsgFromChild(name){

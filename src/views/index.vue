@@ -12,7 +12,7 @@
         </header>
         <section>
                 <ul class="Menu1 clear">
-                    <li v-for="item in listArr">
+                    <li v-for="item in listArr" :key="item.txt">
                         <router-link :to="item.name" class="el-button el-button--info">
                             <span>{{item.txt}}</span> 
                         </router-link>
