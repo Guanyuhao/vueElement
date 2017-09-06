@@ -11,4 +11,4 @@ yarn-error.log*
 *.suo
 *.ntvs*
 *.njsproj
-*.sln/config/inde.js
+*.sln/config/index.js
