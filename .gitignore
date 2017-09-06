@@ -1,8 +1,12 @@
-.DS_Store
-node_modules/
+node_modules
+/
 package-lock.json
-dist/
-npm-debug.log*
+
+dist
+/
+npm-debug.log
+/config/index.js
+*
 yarn-debug.log*
 yarn-error.log*
 
@@ -11,4 +15,4 @@ yarn-error.log*
 *.suo
 *.ntvs*
 *.njsproj
-*.sln/config/index.js
+*.slnconfig
