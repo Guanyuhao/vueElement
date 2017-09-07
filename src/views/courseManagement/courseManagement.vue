@@ -4,7 +4,7 @@
             <el-row>
                 <el-col :span="24">
                     <div class="grid-content bg-purple-dark">
-                        <h1>{{currentTitle}}</h1>
+                        <h1>{{currCom.currentTitle}}</h1>
                     </div>
                     </el-col>
             </el-row>
@@ -17,7 +17,7 @@
                  </el-col>
                  <el-col :span="20" class="right-padding">
                     <!-- 动态切换组件不可后退，嵌套路由ok -->
-                    <component :is="currentView"></component>
+                    <component :is="currCom.currentView"></component>
              
                  </el-col>
              </el-row>
@@ -37,40 +37,44 @@ export default {
     name: 'createManagement',
     data: function() {	
         return {
-            currentView:'createBigCourse',
-            currentTitle:'创建大课程'
+            currCom:{
+                currentView:'createBigCourse',
+                currentTitle:'创建大课程'
+            }
         }
     },
-    mounted(){
+    created(){
+      
         this.$eventBus.$on('jumpBigCourseDetail',function(row){
-            console.log(row)
-            this.currentView = 'bigCoursedetail'
-            console.log( this.currentView)
-        })
+            //组件切换 路由的一种
+            this.currCom.currentView = 'bigCoursedetail' 
+           this.currCom.currentTitle = '大课程详情'
+            
+        }.bind(this))
     },
     methods: {
         showMsgFromChild(name){
            
-            this.currentView = name
+            this.currCom.currentView = name
             if(name == 'createBigCourse'){
-                this.currentTitle = '创建大课程'
+                this.currCom.currentTitle = '创建大课程'
             }else if(name == 'searchBigCourse'){
-                this.currentTitle = '大课程检索'
+                this.currCom.currentTitle = '大课程检索'
                 
             }else if(name == 'createSmallCourse'){
-                this.currentTitle = '创建小课程'
+                this.currCom.currentTitle = '创建小课程'
 
             }else if(name == 'searchSmallCourse'){
-                this.currentTitle = '小课程检索'
+                this.currCom.currentTitle = '小课程检索'
 
             }else if(name == 'createIndependentCourse'){
-                this.currentTitle = '创建独立课程'
+                this.currCom.currentTitle = '创建独立课程'
 
             }else if(name == 'searchIndependentCourse'){
-                this.currentTitle = '独立课程检索'
+                this.currCom.currentTitle = '独立课程检索'
 
             }else if(name == 'courseCategory'){
-                this.currentTitle = '课程类别'
+                this.currCom.currentTitle = '课程类别'
             }
         }
     }

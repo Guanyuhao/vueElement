@@ -1,117 +1,138 @@
 <template>
     <div class="create-course">
-        
-        <section>
+        <div class="create-big-course">
+            <section>
             <div class="courseName">
-            <el-form :label-position="labelPosition" label-width="80px" :model="formLabelAlign"  :rules="rules" ref="formLabelAlign">
-            <el-form-item label="课程名称" prop="name">
-                <el-input v-model="formLabelAlign.name" placeholder="课程名称"></el-input>
-            </el-form-item>
-            <el-form-item label="课程类型">
-                    <el-select v-model="value" >
-                        <el-option
-                        v-for="item in options"
-                        :key="item.value"
-                        :label="item.label"
-                        :value="item.value">
-                        </el-option>
-                    </el-select>
-            </el-form-item>
-            <el-form-item label="业务编号" prop="type">
-                <el-input v-model="formLabelAlign.type" placeholder='业务编号'></el-input>
-            </el-form-item>
-            <el-form-item required class="courseStart">
-                <el-col :span="4"  >
-                    <el-form-item prop="date1"  label="开课时间" >
-                        <el-date-picker type="date" placeholder="选择日期" v-model="formLabelAlign.date1" style="width: 100%;"></el-date-picker>
-                    </el-form-item>
-                </el-col>
-              
-                <el-col :span="3">
-                    <el-form-item  label="课程建议价格" >
-                        <el-input-number  v-model="formLabelAlign.coursePrice" style="width: 100%;"   :controls="false"></el-input-number>
-                    </el-form-item>
-                </el-col>
+                <el-form :label-position="labelPosition" label-width="80px" :model="formLabelAlign"  :rules="rules" ref="formLabelAlign">
+                <el-form-item label="课程名称" prop="name">
+                    <el-input v-model="formLabelAlign.name" placeholder="课程名称"></el-input>
+                </el-form-item>
+                <el-form-item label="课程类型">
+                        <el-select v-model="value" >
+                            <el-option
+                            v-for="item in options"
+                            :key="item.value"
+                            :label="item.label"
+                            :value="item.value">
+                            </el-option>
+                        </el-select>
+                </el-form-item>
+                <el-form-item label="业务编号" prop="type">
+                    <el-input v-model="formLabelAlign.type" placeholder='业务编号'></el-input>
+                </el-form-item>
+                <el-form-item required class="courseStart">
+                    <el-col :span="4"  >
+                        <el-form-item prop="date1"  label="开课时间" >
+                            <el-date-picker type="date" placeholder="选择日期" v-model="formLabelAlign.date1" style="width: 100%;"></el-date-picker>
+                        </el-form-item>
+                    </el-col>
+                  
+                    <el-col :span="3">
+                        <el-form-item  label="课程建议价格" >
+                            <el-input-number  v-model="formLabelAlign.coursePrice" style="width: 100%;"   :controls="false"></el-input-number>
+                        </el-form-item>
+                    </el-col>
+                   
+                    <el-col :span="3">
+                        <el-form-item label="课程总数">
+                            <el-input-number  v-model="formLabelAlign.courseSum" style="width: 100%;"   :controls="false"></el-input-number>
+                        </el-form-item>
+                    </el-col>
+                </el-form-item>
+                <!-- 学段 -->
+                <el-form-item  class="stageAll">
+                    <el-col :span="3">
+                        <el-form-item label="学段">
+                            <el-select v-model="stageVal"  style="width:100%"> 
+                                <el-option
+                                v-for="stage in stageArr"
+                                :key="stage.id"
+                                :label="stage.label"
+                                :value="stage.value">
+                                </el-option>
+                            </el-select>
+                        </el-form-item>
+                    </el-col>
+                    <el-col :span="3">
+                        <el-form-item label="年级">
+                            <el-select v-model="gradVal"  style="width:100%" @change="passGradCode"> 
+                                <el-option
+                                v-for="grad in gradArr"
+                                :key="grad.id"
+                                :label="grad.label"
+                                :value="grad.value">
+                                </el-option>
+                            </el-select>
+                        </el-form-item>
+                    </el-col>
+                    <el-col :span="3">
+                        <el-form-item label="学科">
+                            <el-select v-model="subjectVal" style="width:100%" @change="passSubjectCode"> 
+                                <el-option
+                                v-for="subject in subjectArr"
+                                :key="subject.id"
+                                :label="subject.label"
+                                :value="subject.value">
+                                </el-option>
+                            </el-select>
+                        </el-form-item>
+                    </el-col>
+                    <el-col :span="3">
+                        <el-form-item label="教材">
+                            <el-select v-model="bookTypeVal" style="width:100%"> 
+                                <el-option
+                                v-for="bookType in bookTypeArr"
+                                :key="bookType.id"
+                                :label="bookType.label"
+                                :value="bookType.value">
+                                </el-option>
+                            </el-select>
+                        </el-form-item>
+                    </el-col>
+                </el-form-item>
+                <!-- 结束 -->
                
-                <el-col :span="3">
-                    <el-form-item label="课程总数">
-                        <el-input-number  v-model="formLabelAlign.courseSum" style="width: 100%;"   :controls="false"></el-input-number>
-                    </el-form-item>
-                </el-col>
-            </el-form-item>
-            <!-- 学段 -->
-            <el-form-item  class="stageAll">
-                <el-col :span="3">
-                    <el-form-item label="学段">
-                        <el-select v-model="stageVal"  style="width:100%"> 
-                            <el-option
-                            v-for="item in stageArr"
-                            :key="item.value"
-                            :label="item.label"
-                            :value="item.value">
-                            </el-option>
-                        </el-select>
-                    </el-form-item>
-                </el-col>
-                <el-col :span="3">
-                    <el-form-item label="年级">
-                        <el-select v-model="gradVal"  style="width:100%" @change="passGradCode"> 
-                            <el-option
-                            v-for="item in gradArr"
-                            :key="item.value"
-                            :label="item.label"
-                            :value="item.value">
-                            </el-option>
-                        </el-select>
-                    </el-form-item>
-                </el-col>
-                <el-col :span="3">
-                    <el-form-item label="学科">
-                        <el-select v-model="stageVal" style="width:100%"> 
-                            <el-option
-                            v-for="item in stageArr"
-                            :key="item.value"
-                            :label="item.label"
-                            :value="item.value">
-                            </el-option>
-                        </el-select>
-                    </el-form-item>
-                </el-col>
-                <el-col :span="3">
-                    <el-form-item label="教材">
-                        <el-select v-model="stageVal" style="width:100%"> 
-                            <el-option
-                            v-for="item in stageArr"
-                            :key="item.value"
-                            :label="item.label"
-                            :value="item.value">
-                            </el-option>
-                        </el-select>
-                    </el-form-item>
-                </el-col>
-            </el-form-item>
-            <!-- 结束 -->
-            <!-- <VueUeditor @ready='editorReady' style="width: 500px"></VueUeditor> -->
-                    <div class="editor-container">
-                        <p v-on:click="getUEContent()">获取文本内容</p>
-                      <UE  :ueditorConfig = config1 ref="ue1"></UE>
-                       <p v-on:click="getUEContent2()">获取文本内容</p>
-                      <UE  :ueditorConfig = config2 ref="ue2"></UE>
-                    </div>
-            </el-form>
-           
-            </div>
-        </section>
+                <el-form-item label="课程场景" class="courseScene">
+                    <el-tag v-for="(scene,index) in sceneArr" :key="scene.id" :type="sceneCurrIndex==index?'danger':''" @click.native="changeSceneIndex(index)">
+                        {{scene.name}}
+                    </el-tag>
+                </el-form-item>
+                
+                <el-form-item label="课程来源" class='courseOrigin'>
+                    <el-tag v-for="(origin,index) in originArr" :key="origin.id" :type="originCurrIndex==index?'danger':''" @click.native="changeOriginIndex(index)">
+                        {{origin.name}}
+                    </el-tag>
+
+                </el-form-item>
+               <!-- @ready='editorReady' -->
+                <!-- <VueUeditor style="width: 500px"></VueUeditor> -->
+                 <!-- <VueUeditor @ready='editorReady' style="width: 500px"></VueUeditor> -->
+                        <div class="editor-container">
+                            <p v-on:click="getUEContent()">获取文本内容</p>
+                          <UE  :ueditorConfig = config1 ref="ue1"></UE>
+                           <p v-on:click="getUEContent2()">获取文本内容</p>
+                          <UE  :ueditorConfig = config2 ref="ue2"></UE>
+                        </div>
+                <!-- 结束  -->
+
+                </el-form>
+               
+                </div>
+            </section>
+        </div>
     </div>
 </template>
 
 <script>
-import api from '@/api/index'
+import API from '@/api/index'
 // import  VueUeditor from 'vue-ueditor'
 import UE from "../../components/editor/editor.vue"
 export default {
-    name: 'createCourse',
-    
+
+    name: 'searchBigCourse',
+    components: {
+        // VueUeditor
+    },
     data: function() {	
         return {
             labelPosition: 'top',
@@ -167,7 +188,16 @@ export default {
             config2: {
               initialFrameWidth: null,
               initialFrameHeight: 350
-            }
+            },
+            subjectArr:[],
+            subjectVal:'1',
+            bookTypeArr:[],
+            bookTypeVal: 0,
+            sceneArr:[],
+            sceneCurrIndex:0,
+            //originCurrIndex:{i:0},
+            originCurrIndex:0,
+            originArr:[]
         }
     },
     created(){
@@ -180,53 +210,76 @@ export default {
         init(){
             this.getAllStage()
             this.getAllGrade()
+           
+            this.getCourseScene()
+            this.getCourseOrigin()
         },
+        //获取学段
        getAllStage(){
            let _this = this
-            api.getAllStage()
+            API.getAllStage()
             .then(res=>{
                 let arr = res.data
-                
                 arr.forEach(function(e,i){
-
                     this.stageArr.push({
                         value: e.stageCode,
-                        label:e.stageName
+                        label:e.stageName,
+                        id:e.id
                     })
                 },_this)
-                
-             
             })
             .catch(e=> console.log(e))   
         },
+        //年级
         getAllGrade(){
             let _this = this
-            api.getAllGrad()
+            API.getAllGrad()
             .then(res=>{
                 let arr = res.data
-              
                 arr.forEach(function(e,i){
-
                     this.gradArr.push({
                         value: e.gradeCode,
-                        label:e.gradeName
+                        label:e.gradeName,
+                        id:e.id
                     })
                 },_this)
-                
-             
+                //学科第一次根据年级去请求
+                _this.getSubject('11')
+                //初始化一次教材
+                _this.getBookType(1,11)
+         
             })
             .catch(e=> console.log(e)) 
         },
         passGradCode(code){
            let gradCode = code
-           this.getSubject(gradCode)
+           if(gradCode > 11){
+               this.getSubject(gradCode)
+               this.getBookType(this.subjectVal,gradCode)
+           }
+
         },
+        passSubjectCode(code){
+            let subjectCode = code
+            this.getBookType(subjectCode,this.gradVal)
+        },
+        //学科
         getSubject(gradCode){
+            let _this = this
             //getGrade?code=12 接口坑 getGrade/12
-            api.getAllSubjectByGradeCode('/'+gradCode)
+            API.getAllSubjectByGradeCode('/'+gradCode)
             .then(res=>{
                 let arr = res.data
-                console.log(arr)
+                let arrs = [];
+                arr.forEach(function(e,i){
+                    arrs.push({
+                        value:e.code,
+                        label:e.name,
+                        id:i
+                    })
+                })
+                _this.subjectArr = arrs;
+               
             })
         },
         getUEContent() {
@@ -242,6 +295,68 @@ export default {
         getUEContent2(){
              let content = this.$refs.ue2.getUEContent2();
             console.log(content)
+        },
+        //教材
+        getBookType(subjectCode,gradCode){
+            let _this = this
+            //先传学科code再传年级code
+            API.getBookType('/'+subjectCode+'/'+gradCode)
+            .then(res=>{
+                let arr = res.data
+                let arrs = []
+                arr.forEach(function(e,i){
+                    arrs.push({
+                        value:i,
+                        label:e.name,
+                        id:e.code
+                    })
+                })
+                _this.bookTypeArr = arrs;
+            })
+            .catch(e=>console.log(e))          
+        },
+        //课程场景
+        getCourseScene(){
+            let _this = this
+            API.getCourseScene()
+            .then(res=>{
+                let arr = res.data
+             
+                arr.forEach(function(e,i){
+                    _this.sceneArr.push({
+                        name:e.scene_name,
+                        id:e.id
+                    })
+                })
+            
+            })
+            .catch(e=>console.log(e))
+        },
+        //课程来源
+        getCourseOrigin(){
+           let _this = this
+            API.getCourseOrigin()
+            .then(res=>{
+                let arr = res.data
+                
+                arr.forEach(function(e,i){
+                    _this.originArr.push({
+                        name:e.offrom,
+                        id:e.id
+                    })
+                })
+            
+            })
+            .catch(e=>console.log(e)) 
+        },
+        changeSceneIndex(curIndex){
+            this.sceneCurrIndex = curIndex
+        },
+        changeOriginIndex(curIndex){
+
+            this.originCurrIndex=curIndex
+            //坑 $set
+           // this.$set(this.originCurrIndex,'i',curIndex)
         }
       
     },
@@ -252,8 +367,10 @@ export default {
 </script>
 
 <style scoped  lang="scss" >
-.create-course{
+.create-big-course{
     margin:0 auto;
+    // padding: 3% 5%;
+    // border: 1px solid #bfcbd9;
     h2{
        padding-left: 32%; 
        margin-bottom:3%; 
@@ -274,6 +391,18 @@ export default {
             .el-col{
                 margin-right: 2%;
             }
+        }
+        .courseScene{
+            .el-tag{
+                margin-right: 2%;
+                cursor: pointer;                
+            }
+        }
+        .courseOrigin{
+            .el-tag{
+                margin-right: 2%;
+                cursor: pointer;                
+            }           
         }
     }
     .info{

@@ -15,7 +15,8 @@ const apiResource = {
    getSceneByResourceIdApi:'/tSceneController/getSceneByResourceId/5',
    getResourceOriginApi:'/rtResourceOriginController/getSceneByResourceId/5',
    allSubjectApi:'/subject/all',
-   allBigCoursApi:'/courseBig/all'
+   allBigCoursApi:'/courseBig/all',
+   getSmallCourseByBigIdApi:'/courseBig/getSmallCourseByBigId'
 };
 
 //export const RecommendActicleListResource = API_ROOT.concat(apiResource.recommendActicleList);
@@ -31,3 +32,4 @@ export const getSceneByResourceIdApi = API_ROOT.concat(apiResource.getSceneByRes
 export const getResourceOriginApi = API_ROOT.concat(apiResource.getResourceOriginApi)
 export const allSubjectApi = API_ROOT.concat(apiResource.allSubjectApi)
 export const allBigCoursApi = API_ROOT.concat(apiResource.allBigCoursApi)
+export const getSmallCourseByBigIdApi = API_ROOT.concat(apiResource.getSmallCourseByBigIdApi)

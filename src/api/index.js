@@ -10,7 +10,8 @@ import {
 	getSceneByResourceIdApi,
 	getResourceOriginApi,
 	allSubjectApi,
-	allBigCoursApi
+	allBigCoursApi,
+	getSmallCourseByBigIdApi
 } from './resource'
 export default {
 	postRegister(config) {
@@ -43,5 +44,8 @@ export default {
 	},
 	getBigCourse(params){
 		return axios.post(allBigCoursApi,params)
+	},
+	getSmallCourseByBigId(params){
+		return axios.get(getSmallCourseByBigIdApi+params)
 	}
 }
