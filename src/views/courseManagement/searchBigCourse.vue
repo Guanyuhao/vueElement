@@ -125,6 +125,10 @@ export default {
     created(){
         this.init()
     },
+    deactivated(){
+        
+     console.log()
+    },
     methods: {
         init(){
             this.getAllGrade()
@@ -146,9 +150,11 @@ export default {
             this.getBigCourse()
         },
         handleEditor(index,row){
-           
+         
             //跳转课程详情
+           
             this.$eventBus.$emit('jumpBigCourseDetail',row)
+           
         },
         handleDelete(index, row) {
             //console.log(index, row);

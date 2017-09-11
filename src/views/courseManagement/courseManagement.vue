@@ -17,8 +17,13 @@
                  </el-col>
                  <el-col :span="20" class="right-padding">
                     <!-- 动态切换组件不可后退，嵌套路由ok -->
-                    <component :is="currCom.currentView"></component>
-             
+                    <transition 
+                    name="fold" 
+                    mode = "out-in">
+                        <keep-alive>
+                            <component :is="currCom.currentView" :row="params"></component>                        
+                        </keep-alive>
+                    </transition>
                  </el-col>
              </el-row>
         </section>
@@ -40,16 +45,20 @@ export default {
             currCom:{
                 currentView:'createBigCourse',
                 currentTitle:'创建大课程'
-            }
+            },
+            params:''
         }
     },
+    
     created(){
       
         this.$eventBus.$on('jumpBigCourseDetail',function(row){
-            //组件切换 路由的一种
+            //组件切换 
             this.currCom.currentView = 'bigCoursedetail' 
-           this.currCom.currentTitle = '大课程详情'
+            this.currCom.currentTitle = '大课程详情'
             
+           this.params = row
+          
         }.bind(this))
     },
     methods: {
@@ -104,4 +113,66 @@ export default {
   .right-padding{
       padding:2% 5%;
   }
+
+.fold-enter-active {
+  animation-name: fold-in;
+  animation-duration: .5s;
+}
+.fold-leave-active {
+  animation-name: fold-out;
+  animation-duration: .5s;
+}
+.fade-in-active, .fade-out-active{
+    transition: all 0.5s ease     
+}
+.fade-in-enter, .fade-out-active{
+    opacity: 0
+}
+
+@keyframes fold-in {
+  0% {
+    transform: translate3d(120%,0, 0);
+    opacity: 0;
+  }
+  25% {
+    transform: translate3d(90%,0, 0);
+    opacity: .25;    
+  }
+  50% {
+    transform: translate3d(60%,0, 0);
+    opacity: .5;    
+  }
+  75% {
+    transform: translate3d(30%,0, 0);
+    opacity: .75;
+    
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+}
+@keyframes fold-out {
+  0% {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+  25% {
+    transform: translate3d(30%,0, 0);
+    opacity: .75;
+  }
+  50% {
+    transform: translate3d(60%,0, 0);
+    opacity: .5;
+  }
+  75% {
+    transform: translate3d(90%,0, 0);
+    opacity: .25; 
+  }
+  100% {
+    transform: translate3d(120%,0, 0);
+    opacity: 0; 
+  }
+}
+
 </style>

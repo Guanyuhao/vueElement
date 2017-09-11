@@ -104,15 +104,17 @@
                     </el-tag>
 
                 </el-form-item>
-               <!-- @ready='editorReady' -->
-                <!-- <VueUeditor style="width: 500px"></VueUeditor> -->
                  <!-- <VueUeditor @ready='editorReady' style="width: 500px"></VueUeditor> -->
-                        <div class="editor-container">
-                            <p v-on:click="getUEContent()">获取文本内容</p>
-                          <UE  :ueditorConfig = config1 ref="ue1"></UE>
-                           <p v-on:click="getUEContent2()">获取文本内容</p>
-                          <UE  :ueditorConfig = config2 ref="ue2"></UE>
-                        </div>
+                <el-form-item label="编辑器">
+
+                    <div class="editor-container">
+                        <p v-on:click="getUEContent()">获取文本内容</p>
+                        <UE  :ueditorConfig = config1 ref="ue1" style="width:500px"></UE>
+                        <p v-on:click="getUEContent2()">获取文本内容</p>
+                        <UE  :ueditorConfig = config2 ref="ue2"></UE>
+                    </div>
+
+                </el-form-item>
                 <!-- 结束  -->
 
                 </el-form>

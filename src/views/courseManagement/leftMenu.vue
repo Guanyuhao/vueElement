@@ -18,7 +18,7 @@
                 检索课程
             </el-menu-item>
         </el-submenu>
-        <el-submenu index="smallCourse">
+        <!-- <el-submenu index="smallCourse">
             <template slot="title">小课程</template>
             <el-menu-item index="createSmallCourse">
                 创建小课程
@@ -38,7 +38,7 @@
         </el-submenu>
         <el-menu-item index="courseCategory">
                 课程类别
-        </el-menu-item>
+        </el-menu-item> -->
     </el-menu>
 
     </div>

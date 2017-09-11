@@ -3,6 +3,7 @@ import axios from 'axios'
 import {
 	registerApi,
 	loginApi,
+	officeWordApi,
 	allStageApi,
 	allGradApi,
 	allSubjectByGradeCodeApi,
@@ -20,6 +21,9 @@ export default {
 	},
 	postLogin(config){
 		return axios.post(loginApi,config)
+	},
+	postOfficeWord(config){
+		return axios.post(officeWordApi,config)
 	},
 	getAllStage(){
 		return axios.get(allStageApi)

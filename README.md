@@ -33,10 +33,14 @@ For detailed explanation on how things work, checkout the [guide](http://vuejs-t
 ``` 在父组件中使用$on监听子组件自定义事件逻辑回调，子组件中使用$emit去触发事件提供交互数据。
   src/views/product/
 
-  this.$emit('listenToChildEvent', key) 
+  this.$emit('listenToChildEvent', key) =》发射listenToChildEvent
   <left-menu v-on:listenToChildEvent='showMsgFromChild'></left-menu>
-
+  在Method中定义showMsgFromChild接受回调
 如果跨多层父子或者兄弟的话，这个方法会非常的复杂。
+下面再介绍一个官方的语法糖！！！ .sync
+# 从 2.3.0 起我们重新引入了 .sync 修饰符，但是这次它只是作为一个编译时的语法糖存在。它会被扩展为一个自动更新父组件属性的 v-on 侦听器。
+<comp :foo.sync="bar"></comp> =》<comp :foo="bar" @update:foo="val => bar = val"></comp>
+子组件中通过 this.$emit('update:foo', newValue）显示触发
 ```
 >3.建立一个Vue事件中心（跨组件）
 ```说白了就是将所有的通信事件抽离出来，通过一个vue实例来对他们进行管理。
@@ -52,6 +56,8 @@ goodlist交互Car
  this.$eventBus.$on('mappingCar',function(){}）
  
 貌似到了这里我们找到了最好的方式，但是缺点就在‘一方触发，八方回调’比方说当你请了妹子A，B一起吃了饭，但是现在妹子A妹子B都想单独请你吃饭，你怎么办？
+貌似我们现在有遇到一个问题，就是组件的emit会多次分发，导致on回调函数重多次触发，解决方案就是使用$off 在组件生命周期重去关闭他。
+对于这种问题我强行答一波疑=》$eventBus是个全局的Vue实例而组件不是在销毁的时候不会去销毁他，导致出现emit(发射)多次事件。
 ```
 >4.vueX请看教程=>https://vuex.vuejs.org/zh-cn/
 # 配置台实现登录注册 

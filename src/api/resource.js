@@ -8,6 +8,7 @@ const apiResource = {
    // recommendActicleList: '/api/recommendations/posts',  // 获取推荐文章
    registerApi:'/register',
    loginApi:'/login',
+   officeWordApi:'/office/word',
    allStageApi:'/stage?all',
    allGradApi:'/baseGrade?all',
    allSubjectByGradeCodeApi:'/course/getGrade',
@@ -22,6 +23,7 @@ const apiResource = {
 //export const RecommendActicleListResource = API_ROOT.concat(apiResource.recommendActicleList);
 export const registerApi = NODE_ROOT.concat(apiResource.registerApi);
 export const loginApi = NODE_ROOT.concat(apiResource.loginApi);
+export const officeWordApi = NODE_ROOT.concat(apiResource.officeWordApi);
 //资源库
 
 export const allStageApi = API_ROOT.concat(apiResource.allStageApi)

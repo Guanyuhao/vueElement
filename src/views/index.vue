@@ -17,7 +17,9 @@
                             <span>{{item.txt}}</span> 
                         </router-link>
                     </li>
+                    <li @click="postOfficeWord"><a  class="el-button el-button--info">word</a></li>
                 </ul>
+
         </section>
     </div>
 </template>
@@ -67,6 +69,7 @@
  }
 </style>
 <script>
+import API from '@/api/index'
     export default{
         data(){
             return{
@@ -131,6 +134,23 @@
                         txt:'用户反馈'
                     }
                 ]
+            }
+        },
+        created(){
+
+        },
+        methods:{
+            postOfficeWord(){
+                API.postOfficeWord({
+                    type:'<h1>我是一个word</h1>',
+                    fileName:'123'
+                })
+                .then(res=>{
+                   let data = res.data
+                //    if( data.state == 200 ){
+                //      window.location.href='../../API/public/outWord/123.docx'
+                //    }
+                })
             }
         }
     }

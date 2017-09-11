@@ -7,7 +7,9 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 //获取用户从浏览器上的请求信息
 
-var router = require('./routes/index');
+var index = require('./routes/index');
+var ueditor = require('./routes/ueditor')
+var office = require('./routes/office')
 // var users = require('./routes/users');
 // var comment = require('./routes/comment');
 
@@ -26,8 +28,8 @@ var app = express();
 // });    
   
 // view engine setup 模板引擎
-// app.set('views', path.join(__dirname, 'views'));
-// app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -45,7 +47,9 @@ app.use(session({
   saveUninitialized:true
 }))
 
- app.use('/', router);
+ app.use('/', index);
+ app.use('/ueditor',ueditor)
+ app.use('/office',office)
 // app.use('/users', users);
 // app.use('/comment',comment);
 //session 设置

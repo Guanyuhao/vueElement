@@ -6,6 +6,7 @@ dist
 /
 npm-debug.log
 /config/index.js
+*.vscode
 *
 yarn-debug.log*
 yarn-error.log*

@@ -1,10 +1,10 @@
 var bodyParser = require('body-parser')
 var ueditor = require("ueditor")
 var express = require('express');
+var router = express.Router();
 var path = require('path');
-var editor = express.Router();
 
-editor.use("/ueditor/ue", ueditor(path.join(__dirname, 'public'), function(req, res, next) {
+router.use("/ue", ueditor(path.join(__dirname, 'public'), function(req, res, next) {
     
       // ueditor 客户发起上传图片请求
     
@@ -32,4 +32,4 @@ editor.use("/ueditor/ue", ueditor(path.join(__dirname, 'public'), function(req, 
         // 这里填写 ueditor.config.json 这个文件的路径
         res.redirect('/ueditor/ueditor.config.json')
     }}));
-    module.exports = editor;
+    module.exports = router;
