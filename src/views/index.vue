@@ -150,6 +150,7 @@ import API from '@/api/index'
                 //    if( data.state == 200 ){
                 //      window.location.href='../../API/public/outWord/123.docx'
                 //    }
+                    window.open('http://localhost:9091/office/download')
                 })
             }
         }
