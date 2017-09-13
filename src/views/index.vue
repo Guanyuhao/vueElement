@@ -147,10 +147,10 @@ import API from '@/api/index'
                 })
                 .then(res=>{
                    let data = res.data
-                //    if( data.state == 200 ){
-                //      window.location.href='../../API/public/outWord/123.docx'
-                //    }
-                    window.open('http://localhost:9091/office/download')
+                   if( data.state == 200 ){
+                     window.open(data.url)
+                   }
+                    
                 })
             }
         }
