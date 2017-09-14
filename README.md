@@ -60,6 +60,8 @@ goodlist交互Car
 对于这种问题我强行答一波疑=》$eventBus是个全局的Vue实例而组件不是在销毁的时候不会去销毁他，导致出现emit(发射)多次事件。
 ```
 >4.vueX请看教程=>https://vuex.vuejs.org/zh-cn/
+```
+```
 >5.Router
 #路由说明
 ```
@@ -81,4 +83,10 @@ goodlist交互Car
 ```  
 
 ## word导出功能
-
+```
+>一个炫酷吊炸天功能=>通过js下载服务端的文件到本地
+  主要依赖node的模块officegen来生成.docx => 支持office2007↑
+  前端传递.docx文件的名字！！(必选)与内容(可带样式but要求写法不一)
+  node端通过依赖模块去解析生成.docx生成文件的url
+  前端去get请求url来下载node处理的的docx
+```
