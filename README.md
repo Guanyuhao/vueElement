@@ -60,9 +60,9 @@ goodlist交互Car
 对于这种问题我强行答一波疑=》$eventBus是个全局的Vue实例而组件不是在销毁的时候不会去销毁他，导致出现emit(发射)多次事件。
 ```
 >4.vueX请看教程=>https://vuex.vuejs.org/zh-cn/
-# 配置台实现登录注册 
+# 后台node
 >数据库noSQL=>mongoDB,语言nodeJS ***前后端不能乱！！！
-## 实现逻辑
+## 登陆注册
 ```
   前端请求node，使用webpack代理解决跨域
   node操作数据库处理相关逻辑后，返回数据给前端
@@ -79,4 +79,5 @@ goodlist交互Car
 	6>完成页面跳转的对滚动条行为的控制=>scrollBehavior
 	7>路由懒加载=>组件按组分块
 ```
-#node实习word导出功能
+## word导出功能
+
