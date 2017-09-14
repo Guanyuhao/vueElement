@@ -7,7 +7,8 @@ dist
 npm-debug.log
 /config/index.js
 *.vscode
-*
+/API/.vscode
+/API/package-lock.json
 yarn-debug.log*
 yarn-error.log*
 
