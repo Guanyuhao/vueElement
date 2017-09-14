@@ -79,3 +79,4 @@ goodlist交互Car
 	6>完成页面跳转的对滚动条行为的控制=>scrollBehavior
 	7>路由懒加载=>组件按组分块
 ```
+#node实习word导出功能
