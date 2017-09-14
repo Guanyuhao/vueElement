@@ -17,9 +17,23 @@
                             <span>{{item.txt}}</span> 
                         </router-link>
                     </li>
-                    <li @click="postOfficeWord"><a  class="el-button el-button--info">word</a></li>
+                    <li @click="wordDialogState = true"><a  class="el-button el-button--info">word</a></li>
                 </ul>
-
+                    <!-- 表单 -->
+                    <el-dialog title="生存word文件" :visible.sync="wordDialogState" class="wordDialog">
+                        <el-form :model="wordForm" ref="wordForm">
+                            <el-form-item label="文件名字" label-width="80px">
+                                <el-input v-model="wordForm.name" ></el-input>
+                            </el-form-item>
+                            <el-form-item label="内容" label-width="80px">
+                                <el-input v-model="wordForm.dec" type="textarea"></el-input>                                
+                            </el-form-item>    
+                        </el-form>
+                        <div slot="footer" class="dialog-footer" >
+                            <el-button @click="wordDialogState = false">取 消</el-button>
+                            <el-button type="primary" @click="postOfficeWord">确 定</el-button>
+                        </div>
+                    </el-dialog>
         </section>
     </div>
 </template>
@@ -133,17 +147,37 @@ import API from '@/api/index'
                         name:'/userFeedback',
                         txt:'用户反馈'
                     }
-                ]
+                ],
+                wordForm:{
+                    name:'',
+                    dec:''
+                },
+                wordDialogState:false
             }
         },
         created(){
 
         },
         methods:{
+            checkWordForm(){
+                let drag = false
+                if (this.wordForm.name == ''){
+                    drag = false
+                    this.$message({type:'warning',message:'文件名字必填'})
+                }else{
+                    drag = true
+                }
+                return drag
+                
+            },
             postOfficeWord(){
+
+              if( !this.checkWordForm()){
+                  return false
+              }
                 API.postOfficeWord({
-                    type:'<h1>我是一个word</h1>',
-                    fileName:'123'
+                    type:this.wordForm.dec,
+                    fileName:this.wordForm.name
                 })
                 .then(res=>{
                    let data = res.data
@@ -152,6 +186,7 @@ import API from '@/api/index'
                    }
                     
                 })
+                .catch(e=>console.log(e))
             }
         }
     }
