@@ -1,9 +1,9 @@
 node_modules
-/
+
 package-lock.json
 
 dist
-/
+
 npm-debug.log
 /config/index.js
 *.vscode
