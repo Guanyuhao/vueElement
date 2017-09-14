@@ -63,13 +63,13 @@ goodlist交互Car
 >5.Router
 #路由说明
 ```
-	1>好看的url，启用路由的 history 模式 /#/login => /login ***需要后端小配合
-	2>路由的导航钩子的3部曲=>Enter Update Leaver
-	3>路由元信息=>meta自段用来在前端路由管理权限
-	4>路由过度效果=>使用标签<transition>
-	5>导航完全前后的数据获取行为适用于依赖路由params.id一些页面
-	6>完成页面跳转的对滚动条行为的控制=>scrollBehavior
-	7>路由懒加载=>组件按组分块
+1>好看的url，启用路由的 history 模式 /#/login => /login ***需要后端小配合
+2>路由的导航钩子的3部曲=>Enter Update Leaver
+3>路由元信息=>meta自段用来在前端路由管理权限
+4>路由过度效果=>使用标签<transition>
+5>导航完全前后的数据获取行为适用于依赖路由params.id一些页面
+6>完成页面跳转的对滚动条行为的控制=>scrollBehavior
+7>路由懒加载=>组件按组分块
 ```
 # 后台node
 >数据库noSQL=>mongoDB,语言nodeJS ***前后端不能乱！！！
