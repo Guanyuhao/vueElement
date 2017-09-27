@@ -175,7 +175,7 @@ import API from '@/api/index'
               if( !this.checkWordForm()){
                   return false
               }
-                API.postOfficeWord({
+                API.postOfficeWord({ 
                     type:this.wordForm.dec,
                     fileName:this.wordForm.name
                 })

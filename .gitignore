@@ -1,17 +1,13 @@
 node_modules
-
 package-lock.json
-
 dist
-
 npm-debug.log
 /config/index.js
-*.vscode
-/API/.vscode
 /API/package-lock.json
+/API/public/outWord
+/API/node_modules
 yarn-debug.log*
 yarn-error.log*
-
 # Editor directories and files
 .idea
 *.suo
