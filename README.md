@@ -60,22 +60,33 @@ goodlist交互Car
 对于这种问题我强行答一波疑=》$eventBus是个全局的Vue实例而组件不是在销毁的时候不会去销毁他，导致出现emit(发射)多次事件。
 ```
 >4.vueX请看教程=>https://vuex.vuejs.org/zh-cn/
-# 配置台实现登录注册 
+```
+```
+>5.Router
+#路由说明
+```
+1>好看的url，启用路由的 history 模式 /#/login => /login ***需要后端小配合
+2>路由的导航钩子的3部曲=>Enter Update Leaver
+3>路由元信息=>meta自段用来在前端路由管理权限
+4>路由过度效果=>使用标签<transition>
+5>导航完全前后的数据获取行为适用于依赖路由params.id一些页面
+6>完成页面跳转的对滚动条行为的控制=>scrollBehavior
+7>路由懒加载=>组件按组分块
+```
+# 后台node
 >数据库noSQL=>mongoDB,语言nodeJS ***前后端不能乱！！！
-## 实现逻辑
+### 登陆注册
 ```
   前端请求node，使用webpack代理解决跨域
   node操作数据库处理相关逻辑后，返回数据给前端
   前端通过返回数据再做呈现处理
 ```  
->5.Router
-#路由说明
+
+### word导出功能
+>一个炫酷吊炸天功能=>通过js下载服务端的文件到本地
 ```
-	1>好看的url，启用路由的 history 模式 /#/login => /login ***需要后端小配合
-	2>路由的导航钩子的3部曲=>Enter Update Leaver
-	3>路由元信息=>meta自段用来在前端路由管理权限
-	4>路由过度效果=>使用标签<transition>
-	5>导航完全前后的数据获取行为适用于依赖路由params.id一些页面
-	6>完成页面跳转的对滚动条行为的控制=>scrollBehavior
-	7>路由懒加载=>组件按组分块
+  主要依赖node的模块officegen来生成.docx => 支持office2007↑
+  前端传递.docx文件的名字！！(必选)与内容(可带样式but要求写法不一)
+  node端通过依赖模块去解析生成.docx生成文件的url
+  前端去get请求url来下载node处理的的docx
 ```
