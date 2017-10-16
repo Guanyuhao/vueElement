@@ -10,6 +10,9 @@ var bodyParser = require('body-parser');
 var index = require('./routes/index');
 var ueditor = require('./routes/ueditor')
 var office = require('./routes/office')
+var home = require('./routes/home')
+var mysqlServer = require('./utils/mysqlServer')
+
 // var users = require('./routes/users');
 // var comment = require('./routes/comment');
 
@@ -17,7 +20,7 @@ var office = require('./routes/office')
 var session = require('express-session');
 var app = express();
 
-// 跨域交给前端处理
+// 跨域交给webpack处理
 // app.all('*', function(req, res, next) {    
 //   res.header("Access-Control-Allow-Origin", "*");    
 //   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");    
@@ -46,10 +49,11 @@ app.use(session({
   resave:true,
   saveUninitialized:true
 }))
-
+mysqlServer(app)
  app.use('/', index);
  app.use('/ueditor',ueditor)
  app.use('/office',office)
+ app.use('/home',home)
 // app.use('/users', users);
 // app.use('/comment',comment);
 //session 设置

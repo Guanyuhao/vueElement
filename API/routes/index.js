@@ -4,7 +4,10 @@ var MongoClient = require('mongodb').MongoClient
 var DB_CONN_STR = "mongodb://localhost:27017/guan"
 
 router.all('/',function(res,req){
-  req.send('respose is commming')
+  req.render('index', { 
+    title: 'home',
+    isShow:false
+   });
 })
 
 
@@ -69,7 +72,7 @@ router.all('/login',function(req,res){
          console.log(result[0].username)
          //res.redirect('/')
        res.send('{"msg":"登录成功","status":200}')
-         //一种路由跳转
+      
        }else{
          console.log(result)
          //res.send('失败')
