@@ -3,6 +3,7 @@
  */
 var orm = require('orm');
 var sqlConfig = require('./mysqlConfig')
+
 module.exports = function (app) {
 
   //  console.log(orm.settings.get('connection'))
@@ -14,7 +15,7 @@ module.exports = function (app) {
     //orm.settings.set('instance.returnAllErrors',true);
     //console.log(orm.settings.get('instance'))//instance
 
-    app.use(orm.express(global.sqlStr, {
+    app.use(orm.express(sqlConfig.config, {
         define: function (db, models, next) {
             models.subject = db.define("subjects", {
                 name:String,

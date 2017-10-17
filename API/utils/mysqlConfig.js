@@ -5,4 +5,4 @@ let mysqlConfig={
     password:'123456',
     port:'3306'
 };
-exports.sqlStr = 'mysql://'+mysqlConfig.user+':'+mysqlConfig.password+'@'+mysqlConfig.host+':'+mysqlConfig.port+'/'+mysqlConfig.database;
+exports.config = 'mysql://'+mysqlConfig.user+':'+mysqlConfig.password+'@'+mysqlConfig.host+':'+mysqlConfig.port+'/'+mysqlConfig.database;
