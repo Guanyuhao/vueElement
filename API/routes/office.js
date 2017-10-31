@@ -13,7 +13,7 @@ var async = require('async')
 //const shelljs = require('shelljs')
 
 let downName;
-router.all('/word',function(req,res){
+router.post('/word',function(req,res){
     
     var type = req.body.type
     var fileName = req.body.fileName

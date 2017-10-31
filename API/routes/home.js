@@ -22,7 +22,7 @@ router.all('/login',function(req,res){
             req.models.userinfo.find({username: username, password: hash_password}, function (err, user) {
                 if (err) {
                     console.log(err);
-                }
+                }//isdelete 字段用来判断是否禁用
                 if (user[0].username == username && !user[0].isdelete) {
                     var userTeacher = user[0];
                     var platform=JSON.parse(userTeacher.platform)
