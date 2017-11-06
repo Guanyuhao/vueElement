@@ -1,5 +1,6 @@
 // 数据请求
 import axios from 'axios'
+axios.defaults.headers.token = '402882c55f800de8015f8147bc470011';
 import {
 	registerApi,
 	loginApi,

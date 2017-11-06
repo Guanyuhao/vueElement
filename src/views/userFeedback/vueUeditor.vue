@@ -1,6 +1,6 @@
     <template>
         <div class="ueditor">
-            <VueUeditor @ready='editorReady' style="width: 800px"></VueUeditor>
+            <VueUeditor @ready='editorReady' style="width: 800px;height:500px;"></VueUeditor>
             <el-button @click="getContent"> 获取内容</el-button>
             <p>{{ueContent}}</p>
         </div>

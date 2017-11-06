@@ -95,8 +95,8 @@
                         <div class="editor-container">
                             <p v-on:click="getUEContent()">获取文本内容</p>
                           <UE  :ueditorConfig = config1 ref="ue1"></UE>
-                           <p v-on:click="getUEContent2()">获取文本内容</p>
-                          <UE  :ueditorConfig = config2 ref="ue2"></UE>
+                           <!-- <p v-on:click="getUEContent2()">获取文本内容</p>
+                          <UE  :ueditorConfig = config2 ref="ue2"></UE> -->
                         </div>
                 <!-- 结束  -->
                 <el-form-item label="课程场景" class="courseScene">

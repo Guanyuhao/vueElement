@@ -77,9 +77,8 @@ UE.I18N['zh-cn'] = {
     },
     'simpleupload':{
         'exceedSizeError': '文件大小超出限制',
-        'exceedTypeError': '文件格式不允许必须是png',
+        'exceedTypeError': '文件格式不允许',
         'jsonEncodeError': '服务器返回格式错误',
-        'sizeError':'图片不能大于900KB',
         'loading':"正在上传...",
         'loadError':"上传错误",
         'errorLoadConfig': '后端配置项没有正常加载，上传插件不能正常使用！'
