@@ -181,8 +181,8 @@ import API from '@/api/index'
                 })
                 .then(res=>{
                    let data = res.data
-                   if( data.state == 200 ){
-                     window.open(data.url)
+                   if( data.state == 200 ){                     
+                     location.href = data.url 
                    }
                     
                 })

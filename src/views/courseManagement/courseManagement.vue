@@ -13,7 +13,7 @@
             <!-- 8/17今天来一个动态切换组件,抵制一下嵌套路由 -->
             <el-row> 
                  <el-col :span="4">
-                    <left-menu v-on:listenToChildEvent='showMsgFromChild'></left-menu>
+                    <left-menu v-on:listenToChildEvent='showMsgFromChild' ></left-menu>
                  </el-col>
                  <el-col :span="20" class="right-padding">
                     <!-- 动态切换组件不可后退，嵌套路由ok -->

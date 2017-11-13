@@ -35,7 +35,6 @@
       },
       handleSelect(key, keyPath){
         //此处传值给父组件
-        //console.log(key)
         this.$emit('listenToChildEvent', key)
         
       },

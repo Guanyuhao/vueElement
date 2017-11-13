@@ -6,7 +6,7 @@ var path = require('path');
 var formidable = require('formidable');
 var fs = require('fs')
 
-router.use("/ue", ueditor(path.join(__dirname, 'public'), function(req, res, next) {
+router.use("/ue", ueditor(path.join('../', 'public'), function(req, res, next) {
   var form = new formidable.IncomingForm();
       // ueditor 客户发起上传图片请求
   var imgDir = '/img/ueditor/';

@@ -1,24 +1,28 @@
 //导出借口地址
 import {
     API_ROOT,
-    NODE_ROOT
+    NODE_ROOT,
+    TEST_ROOT
 } from './config.js';
 
 const apiResource = {
-   // recommendActicleList: '/api/recommendations/posts',  // 获取推荐文章
-   registerApi:'/register',
-   loginApi:'/login',
-   officeWordApi:'/office/word',
-   allStageApi:'/stage?all',
-   allGradApi:'/baseGrade?all',
-   allSubjectByGradeCodeApi:'/course/getGrade',
-   getBookTypeByGradSubjectApi:'/bookType/get',
-   getSceneByResourceIdApi:'/tSceneController/getSceneByResourceId/5',
-   getResourceOriginApi:'/rtResourceOriginController/getSceneByResourceId/5',
-   allSubjectApi:'/subject/all',
-   allBigCoursApi:'/courseBig/all',
-   getSmallCourseByBigIdApi:'/courseBig/getSmallCourseByBigId'
+    // recommendActicleList: '/api/recommendations/posts',  // 获取推荐文章
+    test1:'/read/topic/get',
+    registerApi:'/register',
+    loginApi:'/login',
+    officeWordApi:'/office/word',
+    allStageApi:'/stage?all',
+    allGradApi:'/baseGrade?all',
+    allSubjectByGradeCodeApi:'/course/getGrade',
+    getBookTypeByGradSubjectApi:'/bookType/get',
+    getSceneByResourceIdApi:'/tSceneController/getSceneByResourceId/5',
+    getResourceOriginApi:'/rtResourceOriginController/getSceneByResourceId/5',
+    allSubjectApi:'/subject/all',
+    allBigCoursApi:'/courseBig/all',
+    getSmallCourseByBigIdApi:'/courseBig/getSmallCourseByBigId'
 };
+//test
+export const DmXinTiao = TEST_ROOT.concat(apiResource.test1)
 
 //export const RecommendActicleListResource = API_ROOT.concat(apiResource.recommendActicleList);
 export const registerApi = NODE_ROOT.concat(apiResource.registerApi);

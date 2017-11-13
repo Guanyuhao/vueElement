@@ -14,9 +14,9 @@ var async = require('async')
 
 let downName;
 router.post('/word',function(req,res){
-    
-    var type = req.body.type
-    var fileName = req.body.fileName
+    var params = req.body
+    var type = params.type
+    var fileName = params.fileName
     
     docx.on('finalize', function (written) {
         console.log("创建文件");
@@ -92,6 +92,91 @@ router.get('/download',function(req, res, next){
         }
     });
 });
+
+
+// const Img = require('./img');
+
+
+// router.post('/outWord', function (req, res) {
+//     const officegen = require('officegen');
+//     var docx = officegen('docx');
+//     var params = req.body;
+//     var evalStr = params.evalStr;
+//     var fileName = params.fileName;
+//     var imgUrl = params.imgUrl;
+//     docx.on('finalize', function (written) {
+//         console.log("创建文件");
+//     });
+//     docx.on('error', function (err) {
+//         res.send(err);
+//         console.log(err);
+//     });
+//     if (imgUrl && imgUrl !== '') {
+//         // 下载图片
+//         imgUrl = imgUrl.split(',');
+//         Img.downImg(imgUrl, function (err) {
+//             if (err) {
+//                 res.send({
+//                     msg: '下载图片失败',
+//                     error: err,
+//                     evalStr: imgUrl
+//                 });
+//             } else {
+//                 outWordHtml();
+//             }
+//         });
+//     } else {
+//         outWordHtml();
+//     }
+
+//     // 导出word
+//     function outWordHtml() {
+//         try {
+            
+//             eval(evalStr);
+//             // 创建文件
+//             var out = fs.createWriteStream(path.resolve(__dirname, '../../public/outWord/' + decodeURI(fileName) + ".docx"));
+//             out.on('error', function (err) {
+//                 console.log(err);
+//             });
+//             out.on("close", function (data) {
+//                 new logModel({
+//                     operationType: '导出',
+//                     product: '资源库',
+//                     objectType: '导出word',
+//                     objectTab: '',
+//                     name: req.session.user.name,
+//                     code: '',
+//                     time: new Date().getTime()
+//                 }).save();
+//                 res.send({
+//                     msg: 'success'
+//                 });
+//             });
+//             docx.generate(out);
+//             // docx.generate(out, false, function () {
+//             //     new logModel({
+//             //         operationType:'导出',
+//             //         product:'资源库',
+//             //         objectType:'导出word',
+//             //         objectTab:'',
+//             //         name:req.session.user.name,
+//             //         code:'',
+//             //         time:new Date().getTime()
+//             //     }).save();
+//             //     res.send({
+//             //         msg: 'success'
+//             //     });
+//             // });
+//         } catch (err) {
+//             res.send({
+//                 msg: '解析docx时报错',
+//                 error: err.toString(),
+//                 evalStr: evalStr
+//             });
+//         }
+//     }
+// });
 
 
 

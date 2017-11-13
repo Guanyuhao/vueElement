@@ -1,6 +1,6 @@
 <template>
   <div class="goodlist">
-
+    <el-button @click="changeParent">子父回调交互</el-button>
 <el-row>
   <el-col :span="4" v-for="(o, index) in cardArr" :key="index" :offset="index > -1 ? 1 : 0">
     <el-card :body-style="{ padding: '0px' }">
@@ -73,6 +73,9 @@
 
 <script>
 export default {
+  props:{
+    callback:{}
+  },
   data() {
     return {
       fileList:[],
@@ -131,6 +134,9 @@ export default {
             this.cardArr.push({url:item.url,currentDate:new Date(item.uid)})
         }, this);
        
+      },
+      changeParent(){
+        this.callback(this.$parent)
       }
   }
 }

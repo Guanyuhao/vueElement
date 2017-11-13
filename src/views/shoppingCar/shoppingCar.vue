@@ -5,13 +5,13 @@
             <el-row>
                 <el-col :span="24">
                     <div class="grid-content bg-purple-dark">
-                        <h1>购物车</h1>
+                        <h1>{{title}}</h1>
                     </div>
                     </el-col>
             </el-row>
         </header>
         <section>
-            <good-list ></good-list>
+            <good-list :callback="changeTitle"></good-list>
             <car></car>
         </section>
     </div>
@@ -27,10 +27,15 @@ export default {
     },
     name: 'shoppingCar',
     data: function() {	
-        return {}
+        return {
+            title:'1',
+            changeTitle:function(me){
+                console.log(me.title++)
+            }
+        }
     },
     methods: {
-
+        
     }
 }
 </script>
