@@ -49,7 +49,7 @@ app.use(session({
   resave:true,
   saveUninitialized:true
 }))
-mysqlServer(app)
+// mysqlServer(app)
  app.use('/', index);
  app.use('/ueditor',ueditor)
  app.use('/office',office)
