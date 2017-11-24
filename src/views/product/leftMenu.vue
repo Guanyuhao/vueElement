@@ -38,7 +38,7 @@
         this.$emit('listenToChildEvent', key)
         
       },
-      getData:function(){
+      getData(){
           var _this = this;
           fetch('./static/data.json')
           .then(response=>response.json())
