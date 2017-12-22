@@ -46,14 +46,14 @@
                     <el-table-column
                     label="课程Code"
                     width="">
-                    <template scope="scope">
+                    <template  slot-scope="scope">
                         <span style="margin-left: 10px">{{ scope.row.id }}</span>
                     </template>
                     </el-table-column>
                     <el-table-column
                     label="课程内容"
                     width="300">
-                    <template scope="scope">
+                    <template  slot-scope="scope">
                         <el-popover trigger="hover" placement="top">
                         <p>学年: {{ scope.row.grade }}</p>
                         <p>学科: {{ scope.row.subject }}</p>
@@ -65,7 +65,7 @@
                     </template>
                     </el-table-column>
                     <el-table-column label="操作">
-                    <template scope="scope">
+                    <template  slot-scope="scope">
                         <el-button
                         size="small"
                         @click="handleEditor(scope.$index, scope.row)">编辑

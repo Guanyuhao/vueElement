@@ -24,7 +24,7 @@
                 label="数量（个）">                   
                 </el-table-column>
                 <el-table-column label="操作">
-                    <template scope="scope">
+                    <template  slot-scope="scope">
                         <el-button
                         size="small"
                         @click="handleEdit(scope.$index, scope.row)">编辑</el-button>

@@ -2,7 +2,7 @@ node_modules
 package-lock.json
 dist
 npm-debug.log
-/config/index.js
+
 /API/package-lock.json
 /API/public/outWord
 /API/node_modules

@@ -6,7 +6,7 @@
     :row-style="showTr">  
     <el-table-column v-for="(column, index) in columns" :key="column.dataIndex"  
       :label="column.text">  
-      <template scope="scope">  
+      <template  slot-scope="scope">  
         <span v-if="spaceIconShow(index)" v-for="(space, levelIndex) in scope.row._level" class="ms-tree-space"></span>  
         <button class="button is-outlined is-primary is-small" v-if="toggleIconShow(index,scope.row)" @click="toggle(scope.$index)">  
           <i v-if="!scope.row._expanded" class="el-icon-caret-right" aria-hidden="true"></i>  
@@ -17,7 +17,7 @@
       </template>  
     </el-table-column>  
     <el-table-column label="操作" v-if="treeType === 'normal'" width="260">  
-      <template scope="scopes">  
+      <template  slot-scope="scopes">  
         <button type="button" class="el-button el-button--default el-button--small">  
           <router-link  
             :to="{ path: requestUrl + 'edit', query: {id:  scopes.row.id} }"  
