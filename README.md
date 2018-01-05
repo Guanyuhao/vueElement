@@ -62,6 +62,16 @@ goodlist交互Car
 >4.vueX请看教程=>https://vuex.vuejs.org/zh-cn/
 ```
 ```
+>Vue 怕坑路=>只写官网没有的
+```
+在数据不变的情况下强制刷新dom的问题
+控制数据的 :key = `id`
+id:+new Date()
+this.id = +new Date();
+Vue模拟jquery trigger vue 2.0 / vue 1.0 使用v-el;
+<button ref="myBtn" @click=a($event) ></button>
+this.$ref.myBtn.click()
+```
 >5.Router
 #路由说明
 ```
