@@ -52,7 +52,15 @@ module.exports = {
        },
        changeOrigin: true,
        secure: false
-     }
+     },
+     '/zb':{ 
+      target: 'http://api.zb.com',        
+       pathRewrite:{
+         '^/zb':''
+       },
+       changeOrigin:true,
+       secure:false
+      }
     },
     // CSS Sourcemaps off by default because relative paths are "buggy"
     // with this option, according to the CSS-Loader README

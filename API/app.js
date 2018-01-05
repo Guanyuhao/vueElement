@@ -11,6 +11,7 @@ var index = require('./routes/index');
 var ueditor = require('./routes/ueditor')
 var office = require('./routes/office')
 var home = require('./routes/home')
+var kline = require('./routes/kline')
 var mysqlServer = require('./utils/mysqlServer')
 
 // var users = require('./routes/users');
@@ -54,6 +55,8 @@ app.use(session({
  app.use('/ueditor',ueditor)
  app.use('/office',office)
  app.use('/home',home)
+ app.use('/kline',kline)
+ 
 // app.use('/users', users);
 // app.use('/comment',comment);
 //session 设置

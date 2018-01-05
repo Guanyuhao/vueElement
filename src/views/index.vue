@@ -146,6 +146,10 @@ import API from '@/api/index'
                     {
                         name:'/userFeedback',
                         txt:'用户反馈'
+                    },
+                    {
+                        name:'/transaction',
+                        txt:'交易中心'
                     }
                 ],
                 wordForm:{

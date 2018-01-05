@@ -8,7 +8,7 @@
 
 <script>
 import uEditor from './vueUeditor'
-console.log(uEditor)
+
 export default {
     components:{
         uEditor

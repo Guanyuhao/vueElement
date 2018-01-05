@@ -1,6 +1,28 @@
 // 数据请求
 import axios from 'axios'
-axios.defaults.headers.token = '402882c55fa3808b015fa38dfe580007';
+//axios.defaults.headers.token = '402882c55fa3808b015fa38dfe580007';
+axios.defaults.withCredentials = true;//cookie session 问题
+//axios  request拦截器
+// axios.interceptors.request.use(
+//     config => {
+//         if(config.method == 'post'){
+//             config.data = Qs.stringify(config.data);//数据请求头问题
+//         }
+//         return config;
+//     },
+//     error => {
+//         return Promise.reject(err);
+//     }
+// );
+// //axios response 拦截器
+// axios.interceptors.response.use(
+//     response => {
+//         return response;
+//     },
+//     error => {
+//         return Promise.reject(error)
+//     }
+// )
 import {
 	registerApi,
 	loginApi,
@@ -13,7 +35,13 @@ import {
 	getResourceOriginApi,
 	allSubjectApi,
 	allBigCoursApi,
-	getSmallCourseByBigIdApi
+	getSmallCourseByBigIdApi,
+	//zb
+	getMarketsApi,
+	getDepthApi,
+	getTicketApi,
+	getTradesApi,
+	getKlineApi
 } from './resource'
 export default {
 	postRegister(config) {
@@ -52,6 +80,21 @@ export default {
 	},
 	getSmallCourseByBigId(params){
 		return axios.get(getSmallCourseByBigIdApi+params)
+	},
+	getDepth(params){
+		return axios.get(getDepthApi,{params})
+	},
+	getMarkets(params){
+		return axios.get(getMarketsApi,{params})
+	},
+	getTrades(params){
+		return axios.get(getTradesApi,{params})
+	},
+	getKline(params){
+		return axios.get(getKlineApi,{params})
+	},
+	getTicket(params){
+		return axios.get(getTicketApi,{params})
 	}
 }
 // import obj from './StrToOutWord'

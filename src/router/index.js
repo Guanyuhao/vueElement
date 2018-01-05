@@ -29,7 +29,8 @@ const courseManagement = r => require.ensure([],()=>r(require('@/views/courseMan
 const login  = r =>require.ensure([],()=>r(require('@/Login')),'user')
 //用户反馈
 const userFeedback = r => require.ensure([],()=>r(require('@/views/userFeedback/userFeedback')),'views')
-
+//K线
+const transaction = r =>require.ensure([],()=>r(require('@/views/transaction/transaction')),'views')
 Vue.use(Router)
 export default new Router({
   mode: 'history',
@@ -43,6 +44,11 @@ export default new Router({
       path:'/',
       name:'index',
       component:index
+    },
+    {
+      path:'/transaction',
+      name:'transaction',
+      component:transaction
     },
     {
       path: '/home',
