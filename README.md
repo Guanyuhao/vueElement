@@ -76,7 +76,7 @@ this.$ref.myBtn.click()
 #路由说明
 ```
 1>好看的url，启用路由的 history 模式 /#/login => /login ***需要后端小配合
-2>路由的导航钩子的3部曲=>Enter Update Leaver
+2>路由的导航钩子的3部曲=>Enter Update Leaver 这里需要注意路由守卫的分三种 全局路由守卫，局部路由守卫，组件路由守卫
 3>路由元信息=>meta自段用来在前端路由管理权限
 4>路由过度效果=>使用标签<transition>
 5>导航完全前后的数据获取行为适用于依赖路由params.id一些页面
