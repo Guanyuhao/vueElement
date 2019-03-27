@@ -72,6 +72,17 @@ this.id = +new Date();
 Vue模拟jquery trigger vue 2.0 / vue 1.0 使用v-el;
 <button ref="myBtn" @click=a($event) ></button>
 this.$ref.myBtn.click()
+// 父组件
+<llpCode @onCmBlur='getCodeValue(codeItem,arguments)'></llpCode>
+getCodeValue(item,arg){
+  console.log(item,arg[0])
+},
+// 子组件
+onCmBlur(codemirror) {
+  console.log('onCmBlur', codemirror.getValue())
+  this.$emit('onCmBlur',codemirror.getValue())
+},
+
 ```
 >5.Router
 #路由说明
