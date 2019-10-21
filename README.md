@@ -82,8 +82,14 @@ onCmBlur(codemirror) {
   console.log('onCmBlur', codemirror.getValue())
   this.$emit('onCmBlur',codemirror.getValue())
 },
-
 ```
+
+>Element UI recode
+```
+ElAutocomplete ref = 'searchInput' 回车搜索关闭远程提示下拉框
+this.$refs.searchInput.$refs.suggestions.showPopper = false;
+```
+
 >5.Router
 #路由说明
 ```
